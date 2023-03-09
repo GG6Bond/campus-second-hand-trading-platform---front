@@ -1,0 +1,231 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{ //首页
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "二手交易平台",
+				"enablePullDownRefresh": false
+			}
+		},
+		{ //商品列表页
+			"path": "pages/shoppingList/shoppingList",
+			"style": {
+				"navigationBarTitleText": "商品",
+				"enablePullDownRefresh": true
+			}
+		},
+		{ //用户信息页
+			"path": "pages/userInfomation/userInfomation",
+			"style": {
+				"navigationBarTitleText": "个人信息",
+				"enablePullDownRefresh": false
+			}
+		},
+		{ //商品详情页
+			"path": "pages/itemDetails/itemDetails",
+			"style": {
+				"navigationBarTitleText": "商品详情",
+				"enablePullDownRefresh": false
+			}
+		}
+        ,{ //历史记录
+            "path" : "pages/historyList/historyList",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "历史记录",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{ //发布商品
+            "path" : "pages/createItem/createItem",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "发布闲置",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{ //确认购买
+            "path" : "pages/comfirmBuy/comfirmBuy",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "确认购买",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{ // 用户所有商品
+            "path" : "pages/userHomePage/userHomePage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "所有商品",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{ // 登录页
+            "path" : "pages/sign/signIn/signIn",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{ // 注册页
+            "path" : "pages/sign/signUp/signUp",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "注册",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{ // 编辑页
+            "path" : "pages/editItem/editItem",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "商品编辑",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{ // 所有商品页
+            "path" : "pages/allProduct/allProduct",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "所有商品",
+                "enablePullDownRefresh": true
+            }
+        }
+        ,{
+            "path" : "pages/buyItem/buyItem",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "购买的商品",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/sellItem/sellItem",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "已出售的商品",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/editUser/editUser",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "用户信息编辑",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/tradingProduct/tradingProduct",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "通知",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/changeUser/changeUser",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/myFollow/myFollow",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "关注的商品",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/searchResult/searchResult",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "搜索结果",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/itemClassify/itemClassify",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/about/about",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "法律法规",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/manageUser/manageUser",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "用户管理",
+                "enablePullDownRefresh": false
+            }
+        }
+        ,{
+            "path" : "pages/manageEditUser/manageEditUser",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "用户编辑",
+                "enablePullDownRefresh": false
+            }
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "二手交易平台",
+		"navigationBarBackgroundColor": "#1b92ff",
+		"backgroundColor": "#d4d4d4"
+		// "backgroundTextStyle":"dark"
+	},
+	// 配置tabbar
+	"tabBar": {
+		"color": "#9d9d9d",
+		"selectedColor": "#1b92ff",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"text": "首页",
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabar/index.png",
+				"selectedIconPath": "static/tabar/index-h.png"
+			},
+			{
+				"text": "商品",
+				"pagePath": "pages/shoppingList/shoppingList",
+				"iconPath": "static/tabar/goods.png",
+				"selectedIconPath": "static/tabar/goods-h.png"
+			},
+			{
+				"text": "发布闲置",
+				"pagePath": "pages/createItem/createItem",
+				"iconPath": "static/tabar/post.png",
+				"selectedIconPath": "static/tabar/post-f.png"
+			},
+			{
+				"text": "我的",
+				"pagePath": "pages/userInfomation/userInfomation",
+				"iconPath": "static/tabar/user.png",
+				"selectedIconPath": "static/tabar/user-f.png"
+			}
+		]
+	}
+	// "condition": {
+	// 	"current": 0,
+	// 	"list": [{
+	// 		"name": "商品详情",
+	// 		"path": "pages/itemDetails/itemDetails",
+	// 		"query": "id=100"
+	// 	}]
+	// }
+}
