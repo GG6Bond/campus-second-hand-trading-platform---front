@@ -3,14 +3,20 @@
 		<view class="sign" v-if="!isLogin">
 			<button class="sign-in" @click="gotoPage('signIn')">去登录</button>
 		</view>
-
-		<swiper class="swiper" :indicator-dots="true" :interval="3000" :duration="1000">
-			<swiper-item  v-for="(item,index) in 6">
-				<view class="swiper-item">
-					<image src="../../static/add-active.png" mode="aspectFill"></image>
+		
+		<!-- 轮播图 -->
+		<!-- 标签里面不能用插值语法 -->
+		<swiper class="swiper" :indicator-dots="true"  :interval="3000" :duration="1000">
+			<swiper-item  v-for="(item,index) in scrollData" :key="item.pic_id">
+				<view class="swiper-item" @click="getInfo(item.pic_url)">
+					<image :src="item.pic_url" mode="scaleToFill"></image>
 				</view>
 			</swiper-item>
 		</swiper>
+		
+
+		
+		 
 		
 		
 		<!-- <view class="search"> -->
@@ -68,6 +74,7 @@
 				user: {},
 				todayList: [],
 				searchData: [],
+				scrollData:[],
 				navData: [{
 					text: "生活用品",
 					class: "icon-cart"
@@ -87,6 +94,7 @@
 			let url = "../sign/signIn/signIn"
 			this.isLogin = this.$checkLogin(url, false);
 			this.user = this.$getUser();
+			this.getSwiper();
 			this.getProductList();
 		},
 		methods: {
@@ -135,6 +143,20 @@
 					url: "../itemClassify/itemClassify?classify=" + this.navData[index].text
 				})
 				// console.log(index)
+			},
+			async getSwiper(){
+				const res = await myRequest({
+					url: "/api/getSwiper/",
+					method:'POST'
+				})
+				console.log(res.data.message);
+				console.log(res.data.message[0].pic_url);
+				this.scrollData = res.data.message;
+				console.log(this.scrollData);
+			},
+			
+			getInfo(item){
+				console.log(item);	
 			}
 		}
 	}
@@ -167,7 +189,17 @@
 			margin-bottom: 50rpx;
 		}
 
-		
+		.swiper{
+			border: #1b92ff;
+			width: 100%;
+			height: 200px;
+			// height: 100%;
+			image{
+				// border: 10px solid red;
+				width: 100%;
+				// height: 100%;
+			}
+		}
 		.hint {
 			color: #939393;
 			padding: 20rpx;
