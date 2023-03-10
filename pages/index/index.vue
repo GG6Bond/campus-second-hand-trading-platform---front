@@ -13,10 +13,10 @@
 		</swiper>
 		
 		
-		<view class="search">
-			<searchBar @searchResult="getResult"></searchBar>
+		<!-- <view class="search"> -->
+			<!-- <searchBar @searchResult="getResult"></searchBar> -->
 			<!-- <search-bar @searchResult="getResult"></search-bar> -->
-		</view>
+		<!-- </view> -->
 		
 		<view class="hint">
 			在本平台发布商品请遵守相关法律法规，严禁发布违法信息。

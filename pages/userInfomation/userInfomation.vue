@@ -195,12 +195,12 @@
 			line-height: 200rpx;
 			position: relative;
 			top: 0;
-			font-size: 60rpx;
+			font-size: 36rpx;
 			background-color: #FFFFFF;
 
 			.right-arrow {
 				position: absolute;
-				right: 8%;
+				right: 2%;
 				text-align: right;
 				font-size: 40rpx;
 			}
@@ -214,8 +214,8 @@
 				position: absolute;
 				top: 50%;
 				// right: 20%;
-				width: 150rpx;
-				height: 150rpx;
+				width: 100rpx;
+				height: 100rpx;
 				transform: translate(0%, -50%);
 			}
 		}

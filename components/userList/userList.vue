@@ -9,6 +9,7 @@
 					<uni-th align="center" width="150">用户权限</uni-th>
 					<uni-th width="200" align="center">设置</uni-th>
 				</uni-tr>
+				
 				<uni-tr v-for="(item, index) in data" :key="index">
 					<uni-td align="center">{{ item.user_id }}</uni-td>
 					<uni-td align="center">{{ role[item.user_role] }}</uni-td>
