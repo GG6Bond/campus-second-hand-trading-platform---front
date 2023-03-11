@@ -166,14 +166,18 @@
 					this.title = "";
 					this.detail = "";
 					this.index = -1;
-					uni.switchTab({
-						url: "../shoppingList/shoppingList",
-						// success() {
-						// 	uni.showToast({
-						// 		title: "发布成功",
-						// 		icon: "none",
-						// 	})
-						// }
+					// uni.switchTab({
+					// 	url: "../shoppingList/shoppingList",
+					// 	success() {
+					// 		uni.showToast({
+					// 			title: "发布成功",
+					// 			icon:"success"
+					// 		})
+					// 	}
+					// })
+					uni.showToast({
+						title: "发布成功",
+						icon:"success"
 					})
 				}
 			},

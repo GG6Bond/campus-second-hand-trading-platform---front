@@ -9,7 +9,9 @@
 		<swiper class="swiper" :indicator-dots="true"  :interval="3000" :duration="1000">
 			<swiper-item  v-for="(item,index) in scrollData" :key="item.pic_id">
 				<view class="swiper-item" @click="getInfo(item.pic_url)">
-					<image :src="item.pic_url" mode="scaleToFill"></image>
+					<!-- <image :src="item.pic_url" mode="scaleToFill"></image> -->
+					<!-- <image src='http:127.0.0.1:8999/swiper/banner1.jpg' mode="scaleToFill"></image> -->
+					<image src="../../static/banner.png" mode="scaleToFill"></image>
 				</view>
 			</swiper-item>
 		</swiper>
