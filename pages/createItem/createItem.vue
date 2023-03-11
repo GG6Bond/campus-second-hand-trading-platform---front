@@ -36,25 +36,36 @@
 					</radio-group>
 				</view>
 			</view>
+			
 			<view class="text row">
 				<textarea class="text-area" placeholder="在这里输入商品的详细信息" v-model="detail"></textarea>
 			</view>
+			
+			
 			<view class="img-box">
 				<view class="img" v-for="(item,index) in imgArr" :key="index">
-					<span class="icon-bin del-btn" @click="delImg(index)"></span>
-					<!-- <view class="del-btn" @click="delImg(index)">×</view> -->
+					<!-- <span class="icon-bin del-btn" @click="delImg(index)"></span> -->
 					<image :src="item" @click="previewImg(index)" class="pic" mode="aspectFill">
 					</image>
+					<image src="../../static/postitem/delete.png" mode="aspectFill" @click="delImg(index)"></image>
+					<!-- <span class="icon-bin del-btn" @click="delImg(index)"></span> -->
+					
+					<!-- <view class="del-btn" @click="delImg(index)">×</view> -->
+
 				</view>
 				<view class="upload-img" @click="chooseImg" v-if="imgArr.length < 9">
 					<!-- <span class="plus"> + </span> -->
-					<span class="icon-cloud-upload"></span>
+					<span class=""></span>
 					&nbsp;上传图片
 				</view>
 			</view>
+			
+			
 			<button class="submit" :disabled="!isLogin" @click="checkSubmit">
-				<span :class="isLogin ? 'icon-upload' : 'icon-ban'"></span>
-				{{isLogin ? " 发布" : "请登录后进行操作"}}
+				<!-- <span :class="isLogin ? 'icon-upload' : 'icon-ban'"></span> -->
+				<image :src="isLogin?'../../static/postitem/post.png':'../../static/postitem/ban.png'" 
+				mode="aspectFill"></image>
+				<text>{{isLogin ? " 发布" : "请登录后进行操作"}}</text>
 			</button>
 		</form>
 	</view>
@@ -293,7 +304,8 @@
 			display: flex;
 			flex-wrap: wrap;
 			margin: 20rpx 48rpx;
-
+			
+			
 			.img {
 				margin: 10rpx;
 				position: relative;
@@ -302,25 +314,34 @@
 				width: $img-size;
 				height: $img-size;
 				overflow: hidden;
+				display: flex;
+				flex-direction: column;
 
-				.del-btn {
+				// image{
+				// 	width: 50rpx;
+				// 	height: 50rpx;
+				// 	align-items: center;
+					
+				// }
+
+				image {
 					position: absolute;
-					width: 100%;
-					height: 40rpx;
+					width: 80rpx;
+					height: 80rpx;
 					line-height: 40rpx;
 					bottom: 0;
-					left: 0;
-					background: #d9d9d9;
+					right: 0;
+					background: #ffffff;
 					font-size: 30rpx;
 					z-index: 999;
 					text-align: center;
 					opacity: 0.8;
 				}
 
-				.icon-bin:before {
-					content: '\e9ac';
-					color: #000000;
-				}
+				// .icon-bin:before {
+				// 	content: '\e9ac';
+				// 	color: #000000;
+				// }
 
 				.pic {
 					text-align: center;
@@ -352,6 +373,23 @@
 
 		.submit {
 			margin: 0 50rpx 30rpx;
+			width: 80%;
+			height: 100rpx;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			
+			image{
+				// padding-top: 10rpx;
+				width: 36rpx;
+				height: 36rpx;
+			}
+			
+			text{
+				padding-left: 20rpx;
+				font-size: 36rpx;
+			}
+			
 		}
 
 		.uni-radio-input-checked {
@@ -359,16 +397,16 @@
 			color: #000;
 		}
 
-		.icon-cloud-upload:before {
-			content: "\e90e";
-		}
+		// .icon-cloud-upload:before {
+		// 	content: "\e90e";
+		// }
 
-		.icon-ban:before {
-			content: '\e901';
-		}
+		// .icon-ban:before {
+		// 	content: '\e901';
+		// }
 
-		.icon-upload:before {
-			content: '\e9c6';
-		}
+		// .icon-upload:before {
+		// 	content: '\e9c6';
+		// }
 	}
 </style>
