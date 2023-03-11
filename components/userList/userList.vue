@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<view class="uni-container">
+			
 			<uni-table ref="table" :loading="loading" border stripe type="none" emptyText="暂无更多数据"
 				@selection-change="selectionChange">
 				<uni-tr>
@@ -22,10 +23,11 @@
 					</uni-td>
 				</uni-tr>
 			</uni-table>
-			<!-- <view class="uni-pagination-box">
+			
+			<view class="uni-pagination-box">
 				<uni-pagination show-icon :page-size="pageSize" :current="pageCurrent" :total="total"
 					@change="change" />
-			</view> -->
+			</view>
 		</view>
 	</view>
 </template>

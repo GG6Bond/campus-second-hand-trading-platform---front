@@ -16,11 +16,6 @@
 			</swiper-item>
 		</swiper>
 		
-
-		
-		 
-		
-		
 		<!-- <view class="search"> -->
 			<!-- <searchBar @searchResult="getResult"></searchBar> -->
 			<!-- <search-bar @searchResult="getResult"></search-bar> -->
@@ -152,8 +147,8 @@
 					url: "/api/getSwiper/",
 					method:'POST'
 				})
-				console.log(res.data.message);
-				console.log(res.data.message[0].pic_url);
+				// console.log(res.data.message);
+				// console.log(res.data.message[0].pic_url);
 				this.scrollData = res.data.message;
 				console.log(this.scrollData);
 			},
@@ -230,7 +225,7 @@
 				}
 
 				.icon {
-					color: #1b92ff;
+					color: #00aaff;
 					font-size: 70rpx;
 				}
 
@@ -249,6 +244,9 @@
 				.icon-flickr:before {
 					content: "\1f308";
 				}
+				// .icon-cog:before {
+				//   content: "\e994";
+				// }
 			}
 		}
 

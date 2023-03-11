@@ -2,7 +2,7 @@
 	<view class="userInfomation">
 		<!-- 登录显示 顶部头像 昵称 箭头 -->
 		<view class="user" @click="gotoPage('user')" v-if="user">
-			<image class="image" src="../../static/member.png" mode="aspectFill"></image>
+			<image class="image" src="../../static/member-active.png" mode="aspectFill"></image>
 			<span class="id">{{user.user_name}}</span>
 			<span class="right-arrow">&gt;</span>
 		</view>
@@ -11,28 +11,36 @@
 			<image class="image" src="../../static/member.png" mode="aspectFill"></image>
 			<span class="id">{{"登录后显示"}}</span>
 		</view>
+		
+		
 		<!-- 登录 并且角色为普通用户，进行相应的跳转 -->
 		<view v-if="user && user.user_role === 2" class="first-menu">
 			<view class="buyandsell">
 				<view class="buy" @click="gotoPage('buy')">
-					<view>{{allData.buy}}</view>
-					<view>已购买</view>
+					<!-- <view>{{allData.buy}}</view> -->
+					<image src="../../static/userpage/buy.png"></image>
+					<view>已购买({{allData.buy}})</view>
 				</view>
 				<view class="sell" @click="gotoPage('sell')">
-					<view>{{allData.sell}}</view>
-					<view>已售出</view>
+					<!-- <view>{{allData.sell}}</view> -->
+					<image src="../../static/userpage/sell.png"></image>
+					<view>已售出({{allData.sell}})</view>
 				</view>
 				<view class="follow" @click="gotoPage('follow')">
-					<view>{{allData.follow}}</view>
-					<view>关注</view>
+					<!-- <view>{{allData.follow}}</view> -->
+					<image src="../../static/userpage/like.png"></image>
+					<view>关注({{allData.follow}})</view>
 				</view>
 				<view class="history" @click="gotoPage('history')">
-					<view>{{allData.history}}</view>
-					<view>历史记录</view>
+					<!-- <view>{{allData.history}}</view> -->
+					<image src="../../static/userpage/history.png"></image>
+					<view>历史记录({{allData.history}})</view>
 				</view>
 			</view>
 			<rowTextEnter :data="rowTextEnter"></rowTextEnter>
 		</view>
+		
+		
 		<!-- 角色为超级管理员 -->
 		<view class="manager" v-if="user.user_role === 0">
 			<rowTextEnter :data="superManager"></rowTextEnter>
@@ -52,7 +60,7 @@
 		</view>
 		<!-- 通知 ，点击跳转到交易页面-->
 		<view class="notice" @click="notice" v-if="user && user.user_role == 2">
-			<image src="../../static/message.png" mode="aspectFill" class="img"></image>
+			<image src="../../static/userpage/notice.png" mode="aspectFill" class="img"></image>
 			<span class="red" v-if="allData.trading != 0">{{allData.trading}}</span>
 		</view>
 	</view>
@@ -229,6 +237,11 @@
 			margin: 50rpx 0;
 			display: flex;
 			text-align: center;
+			
+			image{
+				width: 80rpx;
+				height: 80rpx;
+			}
 
 			.buy {
 				flex-grow: 1;
@@ -245,6 +258,9 @@
 			.history {
 				flex-grow: 1;
 			}
+			
+			
+			
 		}
 
 		.manager {

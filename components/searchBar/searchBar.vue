@@ -56,7 +56,7 @@
 				height: 65%;
 				width: 550rpx;
 				border: 1px solid #8a8a8a;
-				border-radius: 100rpx;
+				border-radius: 50rpx;
 			}
 
 			.btn {
