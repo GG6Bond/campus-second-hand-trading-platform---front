@@ -56,7 +56,7 @@
 				</button>
 				<button class="follow" @click="addFollow" v-else-if="status == 0 && user.user_id != owner">
 					<!-- <span :class="isFollow ? 'icon-favorite' : 'icon-not-favorite'"></span> -->
-					<image :src="isFollow ? '../../static/itemdetail/like.png' : '../../static/itemdetail/like-h.png'"
+					<image :src="!isFollow ? '../../static/itemdetail/like.png' : '../../static/itemdetail/like-h.png'"
 					 mode=""></image>
 					{{isFollow ? " 已关注" : " 关注"}}
 				</button>
