@@ -25,9 +25,19 @@
 			在本平台发布商品请遵守相关法律法规，严禁发布违法信息。
 		</view>
 		
-		<view class="nav">
+<!-- 		<view class="nav">
 			<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
 				<view class="icon" :class="item.class"></view>
+				<text>{{item.text}}</text>
+			</view>
+		</view> -->
+		
+		
+		<view class="nav">
+			<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
+				<!-- <view class="icon" :class="item.class"></view> -->
+				<image :src="item.img_url" mode=""></image>
+				<!-- <text>{{item.text}}</text> -->
 				<text>{{item.text}}</text>
 			</view>
 		</view>
@@ -73,19 +83,37 @@
 				todayList: [],
 				searchData: [],
 				scrollData:[],
-				navData: [{
-					text: "生活用品",
-					class: "icon-cart"
-				}, {
-					text: "书本",
-					class: "icon-books"
-				}, {
-					text: "电子产品",
-					class: "icon-display"
-				}, {
-					text: "其它",
-					class: "icon-flickr"
-				}, ]
+				// navData: [{
+				// 	text: "生活用品",
+				// 	class: "icon-cart"
+				// }, {
+				// 	text: "书本",
+				// 	class: "icon-books"
+				// }, {
+				// 	text: "电子产品",
+				// 	class: "icon-display"
+				// }, {
+				// 	text: "其它",
+				// 	class: "icon-flickr"
+				// }, ]
+				navData:[
+					{
+						img_url:'../../static/indexpage/life.png',
+						text: "生活用品"
+					},
+					{
+						img_url:'../../static/indexpage/book.png',
+						text: "书本"
+					},
+					{
+						img_url:'../../static/indexpage/phone.png',
+						text: "电子产品"
+					},
+					{
+						img_url:'../../static/indexpage/etc.png',
+						text: "其他"
+					}
+				]
 			}
 		},
 		onShow() {
@@ -215,35 +243,49 @@
 			align-items: center;
 			padding-top: 50rpx;
 			// flex-wrap: wrap;
+			
+
 
 			.nav-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				
 				width: 25%;
+				
+				image{
+					width: 80rpx;
+					height: 80rpx;
+				}
+				
+				
 
 				text {
 					display: inline-block;
 					padding-top: 10rpx;
 				}
 
-				.icon {
-					color: #00aaff;
-					font-size: 70rpx;
-				}
+				// .icon {
+				// 	color: #00aaff;
+				// 	font-size: 70rpx;
+				// }
 
-				.icon-cart:before {
-					content: "\e90c";
-				}
+				// .icon-cart:before {
+				// 	content: "\e90c";
+				// }
 
-				.icon-books:before {
-					content: "\1f4d2";
-				}
+				// .icon-books:before {
+				// 	content: "\1f4d2";
+				// }
 
-				.icon-display:before {
-					content: "\1f5b3";
-				}
+				// .icon-display:before {
+				// 	content: "\1f5b3";
+				// }
 
-				.icon-flickr:before {
-					content: "\1f308";
-				}
+				// .icon-flickr:before {
+				// 	content: "\1f308";
+				// }
+				
 				// .icon-cog:before {
 				//   content: "\e994";
 				// }

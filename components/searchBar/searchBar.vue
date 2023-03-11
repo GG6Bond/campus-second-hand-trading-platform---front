@@ -5,7 +5,8 @@
 			<!-- 			<button class="btn" form-type="submit">
 				搜索
 			</button> -->
-			<view class="icon-search" @click="searchItem"></view>
+			<!-- <view class="icon-search" @click="searchItem"></view> -->
+			<image src="../../static/searchbar/search.png" mode="scaleToFill" @click="searchItem"></image>
 		</form>
 	</view>
 </template>
@@ -49,7 +50,12 @@
 			align-items: center;
 			justify-content: space-around;
 			width: 750rpx;
-
+			
+			image{
+				padding-left: 20rpx;
+				width: 50rpx;
+				height: 50rpx;
+			}
 			.input {
 				display: inline-block;
 				padding: 0 25rpx;
@@ -76,9 +82,9 @@
 				text-align: center;
 				display: inline-block;
 
-				&:before {
-					content: '\e911';
-				}
+				// &:before {
+				// 	content: '\e911';
+				// }
 			}
 		}
 
