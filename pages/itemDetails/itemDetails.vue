@@ -74,7 +74,9 @@
 				<button type="default" :disabled="!isLogin" class="buy" @click="buy"
 					v-if="owner !== user.user_id && status === 0">
 					<!-- <span :class="isLogin ? '' : 'icon-ban'"></span> -->
-					<image :src="isLogin? '':'../../static/itemdetail/ban.png'"  mode=""></image>
+					<image :src="isLogin? '':'../../static/itemdetail/ban.png'"  
+					v-if="!isLogin"
+					mode=""></image>
 					购买
 				</button>
 				<!-- 买家 end -->
