@@ -2,16 +2,15 @@
 	<view class="userInfomation">
 		<!-- 登录显示 顶部头像 昵称 箭头 -->
 		<view class="user" @click="gotoPage('user')" v-if="user">
-			<image class="image" src="../../static/member-active.png" mode="aspectFill"></image>
+			<image class="image" src="../../static//userpage/member-active.png" mode="aspectFill"></image>
 			<span class="id">{{user.user_name}}</span>
 			<span class="right-arrow">&gt;</span>
 		</view>
 		<!-- 未登录 显示 -->
 		<view class="user" v-else>
-			<image class="image" src="../../static/member.png" mode="aspectFill"></image>
+			<image class="image" src="../../static//userpage/member.png" mode="aspectFill"></image>
 			<span class="id">{{"登录后显示"}}</span>
 		</view>
-		
 		
 		<!-- 登录 并且角色为普通用户，进行相应的跳转 -->
 		<view v-if="user && user.user_role === 2" class="first-menu">

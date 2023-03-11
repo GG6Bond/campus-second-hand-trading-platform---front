@@ -41,10 +41,15 @@
 			</view>
 			<view class="img-box">
 				<view class="img" v-for="(item,index) in imgArr" :key="index">
-					<span class="icon-bin del-btn" @click="delImg(index)"></span>
+					<!-- <span class="icon-bin del-btn" @click="delImg(index)"></span> -->
+<!-- 					<image src="../../static/itemdetail/delete.png" :cl ass="del-btn" 
+					@click="delImg(index)" mode=""></image> -->
 					<!-- <view class="del-btn" @click="delImg(index)">×</view> -->
 					<image :src="item" @click="previewImg(index)" class="pic" mode="aspectFill">
 					</image>
+					
+					<image src="../../static/itemdetail/delete.png" 
+					mode="aspectFill" @click="delImg(index)"></image>
 				</view>
 				<view class="upload-img" @click="chooseImg" v-if="imgArr.length < 9">
 					<!-- <span class="plus"> + </span> -->
@@ -350,7 +355,8 @@
 			display: flex;
 			flex-wrap: wrap;
 			margin: 20rpx 48rpx;
-
+			
+			
 			.img {
 				margin: 10rpx;
 				position: relative;
@@ -360,6 +366,11 @@
 				height: $img-size;
 				overflow: hidden;
 
+				image{
+					width: 50rpx;
+					height: 50rpx;
+				}
+				
 				.del-btn {
 					position: absolute;
 					width: 100%;
@@ -374,15 +385,29 @@
 					opacity: 0.8;
 				}
 
-				.icon-bin:before {
-					content: '\e9ac';
-					color: #000000;
-				}
+				// .icon-bin:before {
+				// 	content: '\e9ac';
+				// 	color: #000000;
+				// }
 
 				.pic {
 					text-align: center;
 					width: 100%;
 					height: 230rpx;
+				}
+				
+				image {
+					position: absolute;
+					width: 80rpx;
+					height: 80rpx;
+					line-height: 40rpx;
+					bottom: 0;
+					right: 0;
+					background: #ffffff;
+					font-size: 30rpx;
+					z-index: 999;
+					text-align: center;
+					opacity: 0.8;
 				}
 			}
 
@@ -419,16 +444,16 @@
 			}
 		}
 
-		.icon-del:before {
-			content: "\e905";
-		}
+		// .icon-del:before {
+		// 	content: "\e905";
+		// }
 
-		.icon-cloud-upload:before {
-			content: "\e90e";
-		}
+		// .icon-cloud-upload:before {
+		// 	content: "\e90e";
+		// }
 
-		.icon-done:before {
-			content: "\e906";
-		}
+		// .icon-done:before {
+		// 	content: "\e906";
+		// }
 	}
 </style>

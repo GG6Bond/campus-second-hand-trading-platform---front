@@ -19,7 +19,7 @@
 	/*每个页面公共css */
 
 	/* 字体图标 */
-	@import url("@/static/font/style.css");
+	/* @import url("@/static/font/style.css"); */
 
 	page {
 		background: #f1f1f1;

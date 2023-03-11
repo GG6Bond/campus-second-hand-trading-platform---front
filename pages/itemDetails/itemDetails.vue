@@ -9,7 +9,7 @@
 		<!-- 轮播图 end -->
 		<!-- 卖家信息 start -->
 		<view class="owner">
-			<uni-icons class="head" type="person-filled" size="45"></uni-icons>
+			<uni-icons class="head" type="person-filled" size="45" color=""></uni-icons>
 			<view class="owner-name">{{ownerName}}</view>
 			<view class="discrict">
 				{{discrictArr[discrict]}}
@@ -18,15 +18,21 @@
 		<!-- 卖家信息 end -->
 
 		<!-- 步骤 start -->
+		<!-- https://uniapp.dcloud.net.cn/component/uniui/uni-steps.html# -->
 		<view class="steps" v-if="status != 0">
 			<uni-steps :options="options" :active="status"></uni-steps>
 		</view>
 		<!-- 步骤 end -->
-
+		
 		<view class="box">
 			<view class="name">{{title}}
 				<span class="price-num">￥{{price}}</span>
 			</view>
+			
+			<view class="tip">
+				详细信息：
+			</view>
+			
 			<view class="detail">
 				<view>{{detail}}</view>
 			</view>
@@ -44,11 +50,14 @@
 			<template v-else>
 				<!-- 关注按钮 start -->
 				<button disabled="false" class="follow" v-if="!isLogin">
-					<span class="icon-ban"></span>
+					<!-- <span class="icon-ban"></span> -->
+					<image src="../../static/itemdetail/ban.png" mode=""></image>
 					关注
 				</button>
 				<button class="follow" @click="addFollow" v-else-if="status == 0 && user.user_id != owner">
-					<span :class="isFollow ? 'icon-favorite' : 'icon-not-favorite'"></span>
+					<!-- <span :class="isFollow ? 'icon-favorite' : 'icon-not-favorite'"></span> -->
+					<image :src="isFollow ? '../../static/itemdetail/like.png' : '../../static/itemdetail/like-h.png'"
+					 mode=""></image>
 					{{isFollow ? " 已关注" : " 关注"}}
 				</button>
 				<!-- 关注按钮 end -->
@@ -64,7 +73,8 @@
 				<!-- 买家 start -->
 				<button type="default" :disabled="!isLogin" class="buy" @click="buy"
 					v-if="owner !== user.user_id && status === 0">
-					<span :class="isLogin ? '' : 'icon-ban'"></span>
+					<!-- <span :class="isLogin ? '' : 'icon-ban'"></span> -->
+					<image :src="isLogin? '':'../../static/itemdetail/ban.png'"  mode=""></image>
 					购买
 				</button>
 				<!-- 买家 end -->
@@ -258,7 +268,10 @@
 
 <style scoped lang="scss">
 	.itemDetails {
-
+		image{
+			width: 60rpx;
+			height: 60rpx;
+		}
 		.swiper {
 			width: 750rpx;
 			height: 380rpx;
@@ -270,22 +283,31 @@
 			}
 		}
 
-		.follow {}
-
-		.icon-not-favorite:before {
-			content: '\e909';
-			transition: linear 0.5s;
+		.follow {
+			display: flex;
+			
+			align-items: center;
+			justify-content: center;
+			image{
+				width: 60rpx;
+				height: 60rpx;
+			}
 		}
 
-		.icon-favorite:before {
-			content: '\e907';
-			color: #ff0000;
-			transition: linear 0.5s;
-		}
+		// .icon-not-favorite:before {
+		// 	content: '\e909';
+		// 	transition: linear 0.5s;
+		// }
 
-		.icon-ban:before {
-			content: '\e901';
-		}
+		// .icon-favorite:before {
+		// 	content: '\e907';
+		// 	color: #ff0000;
+		// 	transition: linear 0.5s;
+		// }
+
+		// .icon-ban:before {
+		// 	content: '\e901';
+		// }
 
 		.owner {
 			padding: 0 30rpx;
@@ -317,6 +339,10 @@
 			margin: 30rpx 0;
 		}
 
+		.connect{
+			font-size: 60rpx;
+		}
+		
 		.box {
 			padding: 30rpx;
 			position: relative;
@@ -333,11 +359,14 @@
 				line-height: 80rpx;
 				font-size: 40rpx;
 			}
-
+			
+			.tip{
+				padding-top: 50rpx;
+			}
 
 			.detail {
 				white-space: pre-wrap;
-				padding-top: 50rpx;
+				padding-top: 20rpx;
 			}
 
 			.scroll-box {
@@ -356,7 +385,7 @@
 			bottom: 0;
 			display: flex;
 			align-items: center;
-			justify-content: space-around;
+			justify-content: center;
 			background: #FFFFFF;
 			height: 120rpx;
 
@@ -365,6 +394,25 @@
 				width: 40%;
 			}
 
+			.follow{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				image{
+					width: 40rpx;
+					height: 40rpx;
+				}
+			}
+			
+			.buy{
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				image{
+					width: 40rpx;
+					height: 40rpx;
+				}
+			}
 			.edit {
 				width: 30%;
 			}
