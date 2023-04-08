@@ -45,9 +45,16 @@
 		</view>
 
 		<view class="today">
-			<view class="title">
-				今天的商品：
+			<view class="today_head">
+				<view class="title">
+					今天的商品：
+				</view>
+
+				<view class="allToday" @click="loolAll">
+					点击查看全部>
+				</view>
 			</view>
+
 			<scroll-view scroll-x="true" class="scroll-box">
 				<shoppingListItemUpDown :data="todayList"></shoppingListItemUpDown>
 			</scroll-view>
@@ -63,11 +70,18 @@
 		</view> -->
 
 
-		<view class="today">
-			<view class="title">
-				求购商品：
+		<view class="want">
+
+			<view class="want_head">
+				<view class="title">
+					求购商品：
+				</view>
+
+				<view class="allWantBuyList">
+					点击查看全部>
+				</view>
 			</view>
-			<view class="" v-for="(item,index) in wantBuyList " :key="index">
+			<view class="" v-for="(item,index) in wantBuyList.slice(0,5) " :key="index">
 				<wantBuyList :item="item" @click.native="lookDetail(index)"></wantBuyList>
 			</view>
 
@@ -191,6 +205,13 @@
 				this.scrollData = res.data.message;
 				console.log(this.scrollData);
 			},
+			
+			loolAll()
+			{
+				uni.switchTab({
+					url:"/pages/shoppingList/shoppingList"
+				})
+			},
 
 
 			async getWantBuyList() {
@@ -202,7 +223,7 @@
 				console.log(res.data.message);
 
 				this.wantBuyList = res.data.message;
-				
+
 				console.log(this.wantBuyList);
 
 
@@ -236,11 +257,48 @@
 			width: 100%;
 			padding: 30rpx 10rpx;
 
-			.title {
-				padding: 30rpx;
-				font-size: 60rpx;
-				text-align: start;
+			.today_head {
+				display: flex;
+				justify-content: space-between;
+				.title {
+					padding: 30rpx;
+					font-size: 60rpx;
+					text-align: start;
+				}
+
+				.allToday {
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+					padding-bottom: 40rpx;
+					color: #1b92ff;
+				}
 			}
+		}
+
+		.want {
+			width: 100%;
+			padding: 30rpx 10rpx;
+
+			.want_head {
+				display: flex;
+				justify-content: space-between;
+
+				.title {
+					padding: 30rpx;
+					font-size: 60rpx;
+					text-align: start;
+				}
+
+				.allWantBuyList {
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-end;
+					padding-bottom: 40rpx;
+					color: #1b92ff;
+				}
+			}
+
 		}
 
 		.logo {
