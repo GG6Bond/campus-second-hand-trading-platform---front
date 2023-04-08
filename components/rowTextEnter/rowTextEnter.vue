@@ -25,12 +25,17 @@
 		},
 		methods: {
 			gotoPage(url, index) {
+				console.log(url);
 				if (url == undefined || url == "") {
 					return;
 				}
+				
+				
 				if (url === "../changeUser/changeUser?index=") {
 					url = url + index
 				}
+
+
 				if (url == "signOut") {
 					uni.showModal({
 						title: "确认退出登录吗？",

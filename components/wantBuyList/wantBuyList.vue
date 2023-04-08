@@ -7,11 +7,11 @@
 
 		<view class="right_content">
 			<view class="wantBuyName">
-				这是名称+{{item.email}}
+				{{item.wantBuyName}}
 			</view>
 
 			<view class="wantDetail">
-				这是详情+{{item.email}}
+				{{item.wantBuyDetail}}
 			</view>
 		</view>
 	</view>
@@ -28,6 +28,7 @@
 		props: {
 			item: {
 				wantBuyName: '',
+				wantBuyDetail:'',
 				email: '',
 				id: 1
 			}

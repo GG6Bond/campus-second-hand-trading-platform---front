@@ -74,14 +74,15 @@
 		data() {
 			return {
 				user: {},
-				rowTextEnter: [{
+				rowTextEnter: [
+					{
 						text: "在这里已经赚了：￥123",
 						url: "../userHomePage/userHomePage"
 					},
 					{
 						text: "查看我的求购",
-						url:'../myWantBuy/myWantBuy'
-					},
+						url: "../myWantBuy/myWantBuy"
+					}
 					// {
 					// 	text: "我关注的商品",
 					// 	url: "../myFollow/myFollow"

@@ -203,10 +203,10 @@
             
         }
         ,{
-            "path" : "myWantBuy/myWantBuy",
+            "path" : "pages/myWantBuy/myWantBuy",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "我的求购",
                 "enablePullDownRefresh": false
             }
             
