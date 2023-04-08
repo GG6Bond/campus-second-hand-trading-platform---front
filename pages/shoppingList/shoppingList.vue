@@ -1,9 +1,16 @@
 <template>
 	<view>
-		<view class="search">
+<!-- 		<view class="search">
 			<searchBar @searchResult="getResult"></searchBar>
-			<!-- <search-bar @searchResult="getResult"></search-bar> -->
+		</view> -->
+		
+		<u-search v-model="search" 
+		height="60" @change="searchItem"></u-search>
+		
+		<view class="want-buy" @click="wantBuy">
+			没有合适的?点击发布求购
 		</view>
+		
 		<shoppingListItem :data="shoppingList"></shoppingListItem>
 		<view class="uni-pagination-box">
 			<uni-pagination show-icon :page-size="pageSize" :current="pageCurrent" :total="total" @change="change" />
@@ -15,9 +22,11 @@
 	import {
 		myRequest
 	} from "@/util/api.js"
+	
 	export default {
 		data() {
 			return {
+				search:'',
 				shoppingList: [],
 				shoppingListItem: [],
 				user: {},
@@ -49,6 +58,7 @@
 				this.total = this.shoppingListItem.length;
 			},
 			getResult(data) {
+				console.log('555'+data);
 				this.shoppingListItem = data;
 				this.changeList();
 			},
@@ -60,8 +70,44 @@
 				this.total = res.data.message.length;
 				this.changeList();
 				// console.log(this.shoppingListItem)
+			},
+			async searchItem(value) {
+				
+				console.log('输入框的值'+value);
+				console.log(this.search);
+				
+				let id = this.$getUser().user_id;
+				const res = await myRequest({
+					url: "/api/searchItem",
+					method: "POST",
+					data: {
+						text: this.search.trim(),
+						id
+					},
+				})
+				
+				// console.log(res);
+				console.log(res.data.message);
+				// this.$emit("searchResult", res.data.message);
+				this.shoppingList = res.data.message;
+			},
+			
+			// getDetail(value)
+			// {
+			// 	console.log(111);
+			// 	console.log(this.search);
+			// 	console.log(value);
+			// },
+			
+			wantBuy(){
+				uni.navigateTo({
+					url:"/pages/wantBuy/wantBuy"
+					
+				})
 			}
 		},
+		
+		
 		watch: {
 			isLogin(newVal, oldVal) {
 				this.getProductList();
@@ -86,4 +132,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.want-buy{
+		height: 100rpx;
+		text-align: center;
+		align-content: center;
+		color: royalblue
+	}
 </style>

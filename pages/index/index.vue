@@ -3,36 +3,38 @@
 		<view class="sign" v-if="!isLogin">
 			<button class="sign-in" @click="gotoPage('signIn')">去登录</button>
 		</view>
-		
+
 		<!-- 轮播图 -->
 		<!-- 标签里面不能用插值语法 -->
-		<swiper class="swiper" :indicator-dots="true"  :interval="3000" :duration="1000">
-			<swiper-item  v-for="(item,index) in scrollData" :key="item.pic_id">
+		<swiper class="swiper" :indicator-dots="true" :interval="3000" :duration="1000">
+			<swiper-item v-for="(item,index) in scrollData" :key="item.pic_id">
 				<view class="swiper-item" @click="getInfo(item.pic_url)">
-					<image :src="baseUrl+item.pic_url" mode="scaleToFill"></image>
-					<!-- <image :src="baseUrl+'/swiper/banner1.jpg'" mode="scaleToFill"></image> -->
-					<!-- <image src="../../static/banner.png" mode="scaleToFill"></image> -->
+					<image :src="baseUrl+item.image" mode="scaleToFill"></image>
 				</view>
 			</swiper-item>
 		</swiper>
-		
+
+
+		<!-- <u-swiper :list="list3" indicator indicatorMode="line" circular></u-swiper> -->
+
+
 		<!-- <view class="search"> -->
-			<!-- <searchBar @searchResult="getResult"></searchBar> -->
-			<!-- <search-bar @searchResult="getResult"></search-bar> -->
+		<!-- <searchBar @searchResult="getResult"></searchBar> -->
+		<!-- <search-bar @searchResult="getResult"></search-bar> -->
 		<!-- </view> -->
-		
+
 		<view class="hint">
 			在本平台发布商品请遵守相关法律法规，严禁发布违法信息。
 		</view>
-		
-<!-- 		<view class="nav">
+
+		<!-- 		<view class="nav">
 			<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
 				<view class="icon" :class="item.class"></view>
 				<text>{{item.text}}</text>
 			</view>
 		</view> -->
-		
-		
+
+
 		<view class="nav">
 			<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
 				<!-- <view class="icon" :class="item.class"></view> -->
@@ -41,7 +43,7 @@
 				<text>{{item.text}}</text>
 			</view>
 		</view>
-		
+
 		<view class="today">
 			<view class="title">
 				今天的商品：
@@ -50,18 +52,31 @@
 				<shoppingListItemUpDown :data="todayList"></shoppingListItemUpDown>
 			</scroll-view>
 		</view>
-		
-		<view class="today">
+
+		<!-- 		<view class="today">
 			<view class="title">
 				推荐商品：
 			</view>
 			<scroll-view scroll-x="true" class="scroll-box">
 				<shoppingListItemUpDown :data="todayList"></shoppingListItemUpDown>
 			</scroll-view>
+		</view> -->
+
+
+		<view class="today">
+			<view class="title">
+				求购商品：
+			</view>
+			<view class="" v-for="(item,index) in wantBuyList " :key="index">
+				<wantBuyList :item="item" @click.native="lookDetail(index)"></wantBuyList>
+			</view>
+
+
 		</view>
-		
+
+
 		<view class="login">
- 			<!-- <wx-login></wx-login> -->
+			<!-- <wx-login></wx-login> -->
 		</view>
 	</view>
 </template>
@@ -70,47 +85,42 @@
 	import {
 		myRequest
 	} from "@/util/api.js"
+	import wantBuyDeatilVue from "../wantBuyDeatil/wantBuyDeatil.vue";
 
 	export default {
 		data() {
 			return {
 				title: '校园二手交易平台',
-				baseUrl:'',
+				baseUrl: '',
 				isLogin: false,
 				show: true,
 				shoppingListItem: [],
 				user: {},
 				todayList: [],
+				wantBuyList: [],
 				searchData: [],
-				scrollData:[],
-				// navData: [{
-				// 	text: "生活用品",
-				// 	class: "icon-cart"
-				// }, {
-				// 	text: "书本",
-				// 	class: "icon-books"
-				// }, {
-				// 	text: "电子产品",
-				// 	class: "icon-display"
-				// }, {
-				// 	text: "其它",
-				// 	class: "icon-flickr"
-				// }, ]
-				navData:[
-					{
-						img_url:'../../static/indexpage/life.png',
+				scrollData: [],
+
+				list3: [
+					'https://cdn.uviewui.com/uview/swiper/swiper3.png',
+					'https://cdn.uviewui.com/uview/swiper/swiper2.png',
+					'https://cdn.uviewui.com/uview/swiper/swiper1.png',
+				],
+
+				navData: [{
+						img_url: '../../static/indexpage/life.png',
 						text: "生活用品"
 					},
 					{
-						img_url:'../../static/indexpage/book.png',
+						img_url: '../../static/indexpage/book.png',
 						text: "书本"
 					},
 					{
-						img_url:'../../static/indexpage/phone.png',
+						img_url: '../../static/indexpage/phone.png',
 						text: "电子产品"
 					},
 					{
-						img_url:'../../static/indexpage/etc.png',
+						img_url: '../../static/indexpage/etc.png',
 						text: "其他"
 					}
 				]
@@ -122,6 +132,7 @@
 			this.user = this.$getUser();
 			this.getSwiper();
 			this.getProductList();
+			this.getWantBuyList();
 		},
 		methods: {
 			gotoPage(sign) {
@@ -170,19 +181,42 @@
 				})
 				// console.log(index)
 			},
-			async getSwiper(){
+			async getSwiper() {
 				const res = await myRequest({
 					url: "/api/getSwiper/",
-					method:'POST'
+					method: 'POST'
 				})
 				// console.log(res.data.message);
 				// console.log(res.data.message[0].pic_url);
 				this.scrollData = res.data.message;
 				console.log(this.scrollData);
 			},
-			
-			getInfo(item){
-				console.log(item);	
+
+
+			async getWantBuyList() {
+				const res = await myRequest({
+					url: "/api/getWantBuyList/",
+					method: 'POST'
+				})
+
+				console.log(res.data.message);
+
+				this.wantBuyList = res.data.message;
+				
+				console.log(this.wantBuyList);
+
+
+			},
+
+			getInfo(item) {
+				console.log(item);
+			},
+
+			lookDetail(index) {
+				console.log(index);
+				uni.navigateTo({
+					url: `/pages/wantBuyDeatil/wantBuyDeatil?id=${this.wantBuyList[index].id}`
+				})
 			}
 		},
 		mounted() {
@@ -218,17 +252,19 @@
 			margin-bottom: 50rpx;
 		}
 
-		.swiper{
+		.swiper {
 			border: #1b92ff;
 			width: 100%;
 			height: 200px;
+
 			// height: 100%;
-			image{
+			image {
 				// border: 10px solid red;
 				width: 100%;
 				// height: 100%;
 			}
 		}
+
 		.hint {
 			color: #939393;
 			padding: 20rpx;
@@ -243,22 +279,22 @@
 			align-items: center;
 			padding-top: 50rpx;
 			// flex-wrap: wrap;
-			
+
 
 
 			.nav-item {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				
+
 				width: 25%;
-				
-				image{
+
+				image {
 					width: 80rpx;
 					height: 80rpx;
 				}
-				
-				
+
+
 
 				text {
 					display: inline-block;
@@ -285,7 +321,7 @@
 				// .icon-flickr:before {
 				// 	content: "\1f308";
 				// }
-				
+
 				// .icon-cog:before {
 				//   content: "\e994";
 				// }

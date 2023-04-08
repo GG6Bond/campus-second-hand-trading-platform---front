@@ -69,6 +69,7 @@
 	import {
 		myRequest
 	} from "@/util/api.js"
+	
 	export default {
 		data() {
 			return {
@@ -77,10 +78,10 @@
 						text: "在这里已经赚了：￥123",
 						url: "../userHomePage/userHomePage"
 					},
-					// {
-					// 	text: "历史记录",
-					// 	url: "../historyList/historyList"
-					// },
+					{
+						text: "查看我的求购",
+						url:'../myWantBuy/myWantBuy'
+					},
 					// {
 					// 	text: "我关注的商品",
 					// 	url: "../myFollow/myFollow"

@@ -1,8 +1,9 @@
 <template>
-	<view>
+	<view class="body">
 		<view class="search">
 			<search-bar :data="shoppingListItem" @searchResult="getResult"></search-bar>
 		</view>
+		
 		<shoppingListItem :data="shoppingListItem" :showStatus="true"></shoppingListItem>
 	</view>
 </template>
@@ -48,4 +49,5 @@
 </script>
 
 <style lang="scss" scoped>
+	
 </style>

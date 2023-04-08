@@ -2,10 +2,6 @@
 	<view class="search-bar">
 		<form @submit="searchItem" class="form">
 			<input v-model="search" confirm-type="search" class="input" />
-			<!-- 			<button class="btn" form-type="submit">
-				搜索
-			</button> -->
-			<!-- <view class="icon-search" @click="searchItem"></view> -->
 			<image src="../../static/searchbar/search.png" mode="scaleToFill" @click="searchItem"></image>
 		</form>
 	</view>
