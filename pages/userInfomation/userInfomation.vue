@@ -1,3 +1,4 @@
+<!-- tab栏我的也页面 -->
 <template>
 	<view class="userInfomation">
 		<!-- 登录显示 顶部头像 昵称 箭头 -->

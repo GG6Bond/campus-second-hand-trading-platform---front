@@ -1,3 +1,4 @@
+<!-- 登录 -->
 <template>
 	<view class="sign-in">
 		用户名：

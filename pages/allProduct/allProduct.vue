@@ -1,10 +1,13 @@
+<!-- 管理员查看全部商品 -->
 <template>
 	<view class="body">
+		
 		<view class="search">
 			<search-bar :data="shoppingListItem" @searchResult="getResult"></search-bar>
 		</view>
 		
 		<shoppingListItem :data="shoppingListItem" :showStatus="true"></shoppingListItem>
+		
 	</view>
 </template>
 

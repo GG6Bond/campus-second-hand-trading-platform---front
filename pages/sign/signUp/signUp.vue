@@ -1,3 +1,4 @@
+<!-- 注册 -->
 <template>
 	<view class="sign-up">
 		手机号：

@@ -1,3 +1,4 @@
+<!-- 商品详情页面 -->
 <template>
 	<view class="itemDetails">
 		<!-- 轮播图 start -->

@@ -1,3 +1,5 @@
+<!-- 暂时不需要了，用uview替代 -->
+
 <template>
 	<view class="search-bar">
 		<form @submit="searchItem" class="form">

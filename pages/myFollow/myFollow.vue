@@ -1,3 +1,4 @@
+<!-- 我关注的商品页面 -->
 <template>
 	<view class="myFollow">
 		<view v-if="myFollow.length === 0" class="title">没有关注商品</view>

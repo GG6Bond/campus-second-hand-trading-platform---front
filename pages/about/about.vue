@@ -1,3 +1,5 @@
+<!-- 关于页面 -->
+
 <template>
 	<!-- √ -->
 	<view class="about">

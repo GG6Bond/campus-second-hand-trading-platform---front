@@ -1,3 +1,4 @@
+<!-- 分类页面 -->
 <template>
 	<view class="itemClassify">
 		<shoppingListItem :data="itemClassify"></shoppingListItem>

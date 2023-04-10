@@ -1,3 +1,4 @@
+<!-- 通知页面 -->
 <template>
 	<view class="tradingProduct">
 		<view v-if="tradingProduct.length === 0" class="title">没有交易中的商品</view>

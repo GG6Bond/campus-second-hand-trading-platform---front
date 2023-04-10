@@ -1,23 +1,29 @@
+<!-- 管理员修改用户信息 -->
 <template>
 	<view class="manageEditUser">
+		
 		<view class="name row">
 			<label for="name">用户名</label>
 			<input id="name" type="text" v-model="name" />
 		</view>
+		
 		<view class="id row">
 			<label for="id">手机号</label>
 			<input id="name" type="text" v-model="id" />
 		</view>
+		
 		<view class="password row">
 			<label for="password">密码</label>
 			<input id="password" type="password" v-model="password" />
 		</view>
+		
 		<view class="role row">
 			<label for="role">用户类型</label>
 			<picker mode="selector" :range="role" @change="bindPickerChange">
 				<view>{{role[index]}}</view>
 			</picker>
 		</view>
+		
 		<button class="btn" @click="submitUser">提交</button>
 	</view>
 </template>

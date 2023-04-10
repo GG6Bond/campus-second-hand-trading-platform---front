@@ -1,3 +1,4 @@
+<!-- 发布求购页面 -->
 <template>
 	<view>
 		<u-form :model="form" ref="uForm">

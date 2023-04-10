@@ -1,3 +1,4 @@
+<!-- 搜索结果页面 -->
 <template>
 	<view class="searchResult">
 		<shoppingListItem :data="searchResult"></shoppingListItem>

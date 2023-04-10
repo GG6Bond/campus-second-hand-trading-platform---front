@@ -1,3 +1,5 @@
+<!-- 确认购买页面 -->
+
 <template>
 	<view class="comfirmBuy">
 		<view class="item-box">
@@ -53,13 +55,13 @@
 				// console.log(res);
 				if (res.data.status == 0)[
 					uni.showToast({
-						title: "购买成功",
+						title: "购买成功,请及时联系发布者",
 						success() {
 							setTimeout(() => {
 								uni.switchTab({
 									url: "../index/index"
 								})
-							}, 2000)
+							}, 3000)
 						}
 					})
 				]

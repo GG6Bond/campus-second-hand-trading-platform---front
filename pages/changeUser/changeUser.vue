@@ -1,3 +1,5 @@
+<!-- 修改个人信息 -->
+
 <template>
 	<view class="changeUser">
 		<view class="text">{{showText[message]}}</view>

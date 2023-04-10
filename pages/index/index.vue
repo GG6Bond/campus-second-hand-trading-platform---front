@@ -1,3 +1,4 @@
+<!-- 首页 -->
 <template>
 	<view class="content">
 		<view class="sign" v-if="!isLogin">
@@ -92,6 +93,9 @@
 		<view class="login">
 			<!-- <wx-login></wx-login> -->
 		</view>
+		
+		
+		<button @click="testPage">测试按钮</button>
 	</view>
 </template>
 
@@ -149,6 +153,7 @@
 			this.getWantBuyList();
 		},
 		methods: {
+
 			gotoPage(sign) {
 				let url = "../sign/" + sign + "/" + sign
 				uni.navigateTo({
@@ -238,6 +243,14 @@
 				uni.navigateTo({
 					url: `/pages/wantBuyDeatil/wantBuyDeatil?id=${this.wantBuyList[index].id}`
 				})
+			},
+			
+			testPage(){
+				console.log("click test button !!!");
+				uni.navigateTo({
+					url:'/pages/testPage/testPage'
+				})
+				console.log("click test button222 !!!");
 			}
 		},
 		mounted() {

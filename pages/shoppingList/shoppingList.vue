@@ -1,3 +1,4 @@
+<!-- tab栏商品页面 -->
 <template>
 	<view>
 <!-- 		<view class="search">

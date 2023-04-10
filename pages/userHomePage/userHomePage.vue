@@ -1,3 +1,4 @@
+<!-- 用户发布的所有商品的信息 -->
 <template>
 	<view class="userHomePage">
 		<view class="title">{{shoppingListItem.length == 0 ? "这里啥也没有" : ""}}</view>

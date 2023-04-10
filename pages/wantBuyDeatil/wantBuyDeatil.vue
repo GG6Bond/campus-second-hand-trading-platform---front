@@ -1,3 +1,4 @@
+<!-- 求购商品详情页面 -->
 <template>
 	<view class="content">
 		<view class="name">

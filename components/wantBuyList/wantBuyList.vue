@@ -45,6 +45,7 @@
 	.wantBuyItem {
 		height: 200rpx;
 		display: flex;
+		padding: 20rpx;
 
 
 		.left_pic {}
@@ -54,7 +55,7 @@
 
 			.wantBuyName {
 				font-size: 50rpx;
-				width: 240px;
+				width: 200px;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
@@ -62,7 +63,7 @@
 
 			.wantDetail {
 				padding-top: 25rpx;
-				width: 240px;
+				width: 220px;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;

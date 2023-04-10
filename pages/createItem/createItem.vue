@@ -1,15 +1,19 @@
+<!-- 发布闲置页面 -->
 <template>
 	<view class="createItem">
 		<form>
 			<view class="title">
+				
 				<view class="title-text row">
 					<view class="left-text">标题：</view>
 					<input class="titleName" v-model="title" />
 				</view>
+				
 				<view class="price-num row">
 					<view class="left-text">价格：</view>
 					<input class="price" type="digit" placeholder="￥" v-model="price" />
 				</view>
+				
 				<view class="classify row">
 					<picker mode="selector" :value="index" :range="classify" @change="bindPickerChange">
 						<view>
@@ -22,6 +26,7 @@
 						</view>
 					</picker>
 				</view>
+				
 				<view class="uni-list row">
 					<radio-group @change="radioChange">
 						<view class="left-text">
@@ -35,6 +40,7 @@
 						</label>
 					</radio-group>
 				</view>
+				
 			</view>
 			
 			<view class="text row">
@@ -124,6 +130,11 @@
 				if (this.imgArr.length >= 9) {
 					return;
 				}
+				
+				
+				// [...this.imgArr, ...res.tempFilePaths] 是扩展运算符的使用，
+				// 可以将原来的 this.imgArr 数组和新的 res.tempFilePaths 数组合并成一个新的数组，
+				// 然后将其赋值给 this.imgArr。这样做可以避免覆盖 this.imgArr 数组里现有的元素。
 				uni.chooseImage({
 					count: 9 - this.imgArr.length,
 					success: (res) => {

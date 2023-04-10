@@ -1,5 +1,8 @@
+<!-- 编辑商品页面 -->
+
 <template>
 	<view class="editItem">
+		
 		<form>
 			<view class="title">
 				<view class="title-text row">

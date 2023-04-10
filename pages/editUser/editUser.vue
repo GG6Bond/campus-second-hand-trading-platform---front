@@ -1,3 +1,5 @@
+<!-- 用户信息编辑页面 -->
+
 <template>
 	<view class="editUser">
 		<rowTextEnter :data="rowTextEnter"></rowTextEnter>

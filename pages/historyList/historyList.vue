@@ -1,3 +1,4 @@
+<!-- 历史记录页面 -->
 <template>
 	<view class="historyList">
 		<view v-if="historyList.length === 0" class="title">没有历史记录</view>

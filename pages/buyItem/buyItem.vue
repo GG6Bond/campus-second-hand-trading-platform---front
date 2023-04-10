@@ -1,3 +1,4 @@
+<!-- 我买到的 -->
 <template>
 	<view class="buyItem">
 		<view v-if="buyItem.length === 0" class="title">还没有购买商品</view>
