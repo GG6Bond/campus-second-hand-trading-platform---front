@@ -97,6 +97,10 @@
 					{
 						text: "用户权限修改",
 						url: "../manageUser/manageUser"
+					},
+					{
+						text:"公告管理",
+						url:"../postNotice/postNotice"
 					}
 				],
 				manager: [{

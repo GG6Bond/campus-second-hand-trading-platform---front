@@ -220,6 +220,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/postNotice/postNotice",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
