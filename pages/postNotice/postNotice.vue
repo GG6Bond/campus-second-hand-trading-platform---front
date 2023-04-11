@@ -38,9 +38,30 @@
 							content: this.content
 						}
 					})
+					console.log(res.data.status);
+					if (res.data.status === 0) {
+						// console.log("111"+res.data.status);
+						this.title = ''
+						this.content = ''
+						uni.showToast({
+							icon: "success",
+							title: "发布成功",
+							duration:2000
+						})
+						setInterval(()=>{
+							// uni.navigateTo({
+							// 	url:"/pages/index/index"
+							// })
+							uni.navigateBack(1);
+						},2000)
+					} else {
+						uni.showToast({
+							icon: 'error',
+							title: "发布失败，请重试",
+							duration:2000
+						})
+					}
 
-					this.title = ''
-					this.content = ''
 				}
 			}
 		}
