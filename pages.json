@@ -224,7 +224,24 @@
             "path" : "pages/postNotice/postNotice",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "发布公告",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/editNotice/editNotice",
+            "style" :                                                                                    
+            {
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/editNoticeDetail/editNoticeDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "公告详情",
                 "enablePullDownRefresh": false
             }
             

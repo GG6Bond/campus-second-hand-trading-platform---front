@@ -9,3 +9,8 @@ notice_content
 notice_hits
 create_time
 update_time
+
+
+# 全部求购页面
+
+

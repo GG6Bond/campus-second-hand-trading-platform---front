@@ -1,140 +1,229 @@
 <!-- 首页 -->
 <template>
 	<!-- 普通用户 和 管理员 分别显示 -->
-	<view class="user" v-if="user && user.user_role === 2">
-		<view class="content">
-			<view class="sign" v-if="!isLogin">
-				<button class="sign-in" @click="gotoPage('signIn')">去登录</button>
-			</view>
+	<view class="">
 
-			<!-- 轮播图 -->
-			<!-- 标签里面不能用插值语法 -->
-			<swiper class="swiper" :indicator-dots="true" :interval="3000" :duration="1000">
-				<swiper-item v-for="(item,index) in scrollData" :key="item.pic_id">
-					<view class="swiper-item" @click="getInfo(item.pic_url)">
-						<image :src="baseUrl+item.image" mode="scaleToFill"></image>
+		<view class="user" v-if="user && user.user_role === 2">
+			<view class="content">
+				<view class="sign" v-if="!isLogin">
+					<button class="sign-in" @click="gotoPage('signIn')">去登录</button>
+				</view>
+
+				<!-- 轮播图 -->
+				<!-- 标签里面不能用插值语法 -->
+				<swiper class="swiper" :indicator-dots="true" :interval="3000" :duration="1000">
+					<swiper-item v-for="(item,index) in scrollData" :key="item.pic_id">
+						<view class="swiper-item" @click="getInfo(item.pic_url)">
+							<image :src="baseUrl+item.image" mode="scaleToFill"></image>
+						</view>
+					</swiper-item>
+				</swiper>
+
+
+				<!-- <u-swiper :list="list3" indicator indicatorMode="line" circular></u-swiper> -->
+
+
+				<!-- <view class="search"> -->
+				<!-- <searchBar @searchResult="getResult"></searchBar> -->
+				<!-- <search-bar @searchResult="getResult"></search-bar> -->
+				<!-- </view> -->
+
+				<view class="hint">
+					在本平台发布商品请遵守相关法律法规，严禁发布违法信息。
+				</view>
+
+				<!-- 		<view class="nav">
+					<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
+						<view class="icon" :class="item.class"></view>
+						<text>{{item.text}}</text>
 					</view>
-				</swiper-item>
-			</swiper>
+				</view> -->
 
 
-			<!-- <u-swiper :list="list3" indicator indicatorMode="line" circular></u-swiper> -->
-
-
-			<!-- <view class="search"> -->
-			<!-- <searchBar @searchResult="getResult"></searchBar> -->
-			<!-- <search-bar @searchResult="getResult"></search-bar> -->
-			<!-- </view> -->
-
-			<view class="hint">
-				在本平台发布商品请遵守相关法律法规，严禁发布违法信息。
-			</view>
-
-			<!-- 		<view class="nav">
-				<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
-					<view class="icon" :class="item.class"></view>
-					<text>{{item.text}}</text>
+				<view class="nav">
+					<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
+						<!-- <view class="icon" :class="item.class"></view> -->
+						<image :src="item.img_url" mode=""></image>
+						<!-- <text>{{item.text}}</text> -->
+						<text>{{item.text}}</text>
+					</view>
 				</view>
-			</view> -->
 
+				<view class="today">
+					<view class="today_head">
+						<view class="title">
+							今天的商品：
+						</view>
 
-			<view class="nav">
-				<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
-					<!-- <view class="icon" :class="item.class"></view> -->
-					<image :src="item.img_url" mode=""></image>
-					<!-- <text>{{item.text}}</text> -->
-					<text>{{item.text}}</text>
+						<view class="allToday" @click="loolAll">
+							点击查看全部>
+						</view>
+					</view>
+
+					<scroll-view scroll-x="true" class="scroll-box">
+						<shoppingListItemUpDown :data="todayList"></shoppingListItemUpDown>
+					</scroll-view>
 				</view>
-			</view>
 
-			<view class="today">
-				<view class="today_head">
+				<!-- 		<view class="today">
 					<view class="title">
-						今天的商品：
+						推荐商品：
+					</view>
+					<scroll-view scroll-x="true" class="scroll-box">
+						<shoppingListItemUpDown :data="todayList"></shoppingListItemUpDown>
+					</scroll-view>
+				</view> -->
+
+
+				<view class="want">
+
+					<view class="want_head">
+						<view class="title">
+							求购商品：
+						</view>
+
+						<view class="allWantBuyList">
+							点击查看全部>
+						</view>
+					</view>
+					<view class="" v-for="(item,index) in wantBuyList.slice(0,5) " :key="index">
+						<wantBuyList :item="item" @click.native="lookDetail(index)"></wantBuyList>
 					</view>
 
-					<view class="allToday" @click="loolAll">
-						点击查看全部>
-					</view>
+
 				</view>
 
-				<scroll-view scroll-x="true" class="scroll-box">
-					<shoppingListItemUpDown :data="todayList"></shoppingListItemUpDown>
-				</scroll-view>
+
+				<view class="login">
+					<!-- <wx-login></wx-login> -->
+				</view>
+
+
+				<button @click="testPage">测试按钮</button>
 			</view>
-
-			<!-- 		<view class="today">
-				<view class="title">
-					推荐商品：
-				</view>
-				<scroll-view scroll-x="true" class="scroll-box">
-					<shoppingListItemUpDown :data="todayList"></shoppingListItemUpDown>
-				</scroll-view>
-			</view> -->
-
-
-			<view class="want">
-
-				<view class="want_head">
-					<view class="title">
-						求购商品：
-					</view>
-
-					<view class="allWantBuyList">
-						点击查看全部>
-					</view>
-				</view>
-				<view class="" v-for="(item,index) in wantBuyList.slice(0,5) " :key="index">
-					<wantBuyList :item="item" @click.native="lookDetail(index)"></wantBuyList>
-				</view>
-
-
-			</view>
-
-
-			<view class="login">
-				<!-- <wx-login></wx-login> -->
-			</view>
-
-
-			<button @click="testPage">测试按钮</button>
 		</view>
+
+		<view class="admin" v-if="user && user.user_role === 0">
+			<view class="content">
+
+				<view class="sign" v-if="!isLogin">
+					<button class="sign-in" @click="gotoPage('signIn')">去登录</button>
+				</view>
+
+				<view class="notice">
+					<view class="title">
+						公告管理：
+					</view>
+
+					<view class="btn">
+						<button class="btn1" @click="postNotice">发布公告</button>
+						<button class="btn2" @click="lookNotice">查看公告</button>
+					</view>
+				</view>
+
+
+				<view class="want">
+					<view class="want_head">
+						<view class="title">
+							求购商品：
+						</view>
+
+						<view class="allWantBuyList">
+							点击查看全部>
+						</view>
+					</view>
+					<view class="" v-for="(item,index) in wantBuyList.slice(0,5) " :key="index">
+						<wantBuyList :item="item" @click.native="lookDetail(index)"></wantBuyList>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="user" v-if="!user">
+			<view class="content">
+				<view class="sign" v-if="!isLogin">
+					<button class="sign-in" @click="gotoPage('signIn')">去登录</button>
+				</view>
+
+				<!-- 轮播图 -->
+				<!-- 标签里面不能用插值语法 -->
+				<swiper class="swiper" :indicator-dots="true" :interval="3000" :duration="1000">
+					<swiper-item v-for="(item,index) in scrollData" :key="item.pic_id">
+						<view class="swiper-item" @click="getInfo(item.pic_url)">
+							<image :src="baseUrl+item.image" mode="scaleToFill"></image>
+						</view>
+					</swiper-item>
+				</swiper>
+
+
+
+				<view class="hint">
+					在本平台发布商品请遵守相关法律法规，严禁发布违法信息。
+				</view>
+
+
+				<view class="nav">
+					<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
+						<!-- <view class="icon" :class="item.class"></view> -->
+						<image :src="item.img_url" mode=""></image>
+						<!-- <text>{{item.text}}</text> -->
+						<text>{{item.text}}</text>
+					</view>
+				</view>
+
+				<view class="today">
+					<view class="today_head">
+						<view class="title">
+							今天的商品：
+						</view>
+
+						<view class="allToday" @click="loolAll">
+							点击查看全部>
+						</view>
+					</view>
+
+					<scroll-view scroll-x="true" class="scroll-box">
+						<shoppingListItemUpDown :data="todayList"></shoppingListItemUpDown>
+					</scroll-view>
+				</view>
+
+
+				<view class="want">
+
+					<view class="want_head">
+						<view class="title">
+							求购商品：
+						</view>
+
+						<view class="allWantBuyList">
+							点击查看全部>
+						</view>
+					</view>
+					<view class="" v-for="(item,index) in wantBuyList.slice(0,5) " :key="index">
+						<wantBuyList :item="item" @click.native="lookDetail(index)"></wantBuyList>
+					</view>
+
+
+				</view>
+
+
+				<view class="login">
+					<!-- <wx-login></wx-login> -->
+				</view>
+
+
+				<button @click="testPage">测试按钮</button>
+			</view>
+		</view>
+
+
 	</view>
 
 
-	<view class="admin" v-else>
-		<view class="content">
-
-			<view class="notice">
-				<view class="title">
-					公告管理：
-				</view>
-
-				<view class="btn">
-					<button class="btn1" @click="postNotice">发布公告</button>
-					<button class="btn2" @click="lookNotice">查看公告</button>
-				</view>
-			</view>
 
 
-			<view class="want">
-				<view class="want_head">
-					<view class="title">
-						求购商品：
-					</view>
 
-					<view class="allWantBuyList">
-						点击查看全部>
-					</view>
-				</view>
-				<view class="" v-for="(item,index) in wantBuyList.slice(0,5) " :key="index">
-					<wantBuyList :item="item" @click.native="lookDetail(index)"></wantBuyList>
-				</view>
-			</view>
 
-		</view>
-
-	</view>
 </template>
 
 <script>
@@ -189,12 +278,19 @@
 			this.getSwiper();
 			this.getProductList();
 			this.getWantBuyList();
+
 		},
 		methods: {
-			
+
 			postNotice() {
 				uni.navigateTo({
 					url: "/pages/postNotice/postNotice"
+				})
+			},
+
+			lookNotice() {
+				uni.navigateTo({
+					url: "/pages/editNotice/editNotice"
 				})
 			},
 
@@ -356,6 +452,7 @@
 				}
 
 				.allToday {
+					padding-right: 10rpx;
 					display: flex;
 					flex-direction: column;
 					justify-content: flex-end;
@@ -380,6 +477,8 @@
 				}
 
 				.allWantBuyList {
+					padding-right: 10rpx;
+					
 					display: flex;
 					flex-direction: column;
 					justify-content: flex-end;

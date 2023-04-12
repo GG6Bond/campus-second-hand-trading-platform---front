@@ -46,19 +46,18 @@
 						uni.showToast({
 							icon: "success",
 							title: "发布成功",
-							duration:2000
+							duration: 2000
 						})
-						setInterval(()=>{
-							// uni.navigateTo({
-							// 	url:"/pages/index/index"
-							// })
-							uni.navigateBack(1);
-						},2000)
+						// setInterval(() => {
+						// 	uni.switchTab({
+						// 		url: "/pages/index/index"
+						// 	})
+						// }, 2000)
 					} else {
 						uni.showToast({
 							icon: 'error',
 							title: "发布失败，请重试",
-							duration:2000
+							duration: 2000
 						})
 					}
 
