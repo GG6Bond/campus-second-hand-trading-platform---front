@@ -122,6 +122,26 @@
 				</view>
 
 
+				<view class="user">
+					<view class="title">
+						用户管理：
+					</view>
+				
+					<view class="btn">
+						<button class="btn1" @click="manageUser()">用户管理</button>
+					</view>
+				</view>
+				
+				<view class="good">
+					<view class="title">
+						商品管理：
+					</view>
+				
+					<view class="btn">
+						<button class="btn1" @click="manageGoods()">商品管理</button>
+					</view>
+				</view>
+
 				<view class="want">
 					<view class="want_head">
 						<view class="title">
@@ -281,6 +301,21 @@
 
 		},
 		methods: {
+			manageGoods()
+			{
+				// uni.navigateTo({
+				// 	url:"/pages/allProduct/allProduct"
+				// })
+				uni.switchTab({
+					url:"/pages/shoppingList/shoppingList"
+				})
+			},
+			manageUser()
+			{
+				uni.navigateTo({
+					url:"/pages/manageUser/manageUser"
+				})
+			},
 
 			postNotice() {
 				uni.navigateTo({
@@ -436,7 +471,31 @@
 
 		}
 
-
+		.user{
+			.title {
+				padding: 30rpx;
+				font-size: 60rpx;
+			}
+			.btn1{
+				background-color: #cccccc;
+				height: 100rpx;
+				width: 90%;
+			}
+		}
+		
+		
+		.good{
+			.title {
+				padding: 30rpx;
+				font-size: 60rpx;
+			}
+			.btn1{
+				background-color: #cccccc;
+				height: 100rpx;
+				width: 90%;
+			}
+		}
+		
 		.today {
 			width: 100%;
 			padding: 30rpx 10rpx;

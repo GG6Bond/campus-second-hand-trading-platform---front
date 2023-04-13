@@ -46,21 +46,31 @@
 						icon: "error"
 					})
 				} else {
-					this.getPassword();
+					// this.getPassword();
+					this.logIn();
 				}
 			},
-			async getPassword() {
+			async logIn() {
 				const res = await myRequest({
-					url: "/api/getuserinfo/" + this.username
+					url: "/api/logIn/",
+					method: "POST",
+					data: {
+						username: this.username,
+						password: this.password
+					}
 				})
-				if (res.data.message.length === 0) {
+				if (res.data == "error") {
 					uni.showToast({
 						title: "用户不存在",
 						icon: "error",
 					})
 					return;
-				}
-				if (this.password === res.data.message[0].user_password) {
+				} else if (res.data == "pwdErr") {
+					uni.showToast({
+						title: "密码错误",
+						icon: "error"
+					})
+				} else if (res.data.message.length == 1) {
 					this.setUser(res.data.message[0]);
 					uni.showToast({
 						title: "登录成功！",
@@ -70,13 +80,36 @@
 						url: "../../index/index"
 					})
 
-				} else {
-					uni.showToast({
-						title: "密码错误",
-						icon: "error"
-					})
 				}
 			},
+			// async getPassword() {
+			// 	const res = await myRequest({
+			// 		url: "/api/getuserinfo/" + this.username
+			// 	})
+			// 	if (res.data.message.length === 0) {
+			// 		uni.showToast({
+			// 			title: "用户不存在",
+			// 			icon: "error",
+			// 		})
+			// 		return;
+			// 	}
+			// 	if (this.password === res.data.message[0].user_password) {
+			// 		this.setUser(res.data.message[0]);
+			// 		uni.showToast({
+			// 			title: "登录成功！",
+			// 			icon: "none",
+			// 		})
+			// 		uni.switchTab({
+			// 			url: "../../index/index"
+			// 		})
+
+			// 	} else {
+			// 		uni.showToast({
+			// 			title: "密码错误",
+			// 			icon: "error"
+			// 		})
+			// 	}
+			// },
 			setUser(user) {
 				uni.setStorageSync('user', user);
 				uni.setStorageSync('isLogin', true);

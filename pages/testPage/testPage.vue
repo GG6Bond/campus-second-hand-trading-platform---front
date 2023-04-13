@@ -51,7 +51,7 @@
 			width: 90%;
 			height: 600rpx;
 			font-size: 40rpx;
-		}
+		}	
 
 		button {
 
