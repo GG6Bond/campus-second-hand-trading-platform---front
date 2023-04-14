@@ -24,40 +24,40 @@
 			<uni-steps :options="options" :active="status"></uni-steps>
 		</view>
 		<!-- 步骤 end -->
-		
+
 		<view class="box">
 			<view class="name">{{title}}
 				<span class="price-num">￥{{price}}</span>
 			</view>
-			
+
 			<view class="tip">
 				详细信息：
 			</view>
-			
+
 			<view class="detail">
 				<view>{{detail}}</view>
 			</view>
 		</view>
 
 		<view class="buttom" v-if="status != 2"></view>
-		
-		
+
+
 		<view class="comment">
 			<view class="tip">
 				<view class="">
 					评论:
 				</view>
-				
+
 				<view class="post">
-					<input type="text">
-					<button size="default">发布</button>
+					<input type="text" v-model="commentDetail">
+					<button size="default" @click="postComment">发布</button>
 				</view>
 
 			</view>
-			<view class="content" v-for="(item,index) in 5" :key="index">
-				<commentItem></commentItem>
+			<view class="content" v-for="(item,index) in commentList" :key="index">
+				<commentItem :item="item"></commentItem>
 				<view class="divider" v-if="index != 5-1">
-					
+
 				</view>
 			</view>
 		</view>
@@ -79,7 +79,7 @@
 				<button class="follow" @click="addFollow" v-else-if="status == 0 && user.user_id != owner">
 					<!-- <span :class="isFollow ? 'icon-favorite' : 'icon-not-favorite'"></span> -->
 					<image :src="!isFollow ? '../../static/itemdetail/like.png' : '../../static/itemdetail/like-h.png'"
-					 mode=""></image>
+						mode=""></image>
 					{{isFollow ? " 已关注" : " 关注"}}
 				</button>
 				<!-- 关注按钮 end -->
@@ -96,9 +96,7 @@
 				<button type="default" :disabled="!isLogin" class="buy" @click="buy"
 					v-if="owner !== user.user_id && status === 0">
 					<!-- <span :class="isLogin ? '' : 'icon-ban'"></span> -->
-					<image :src="isLogin? '':'../../static/itemdetail/ban.png'"  
-					v-if="!isLogin"
-					mode=""></image>
+					<image :src="isLogin? '':'../../static/itemdetail/ban.png'" v-if="!isLogin" mode=""></image>
 					购买
 				</button>
 				<!-- 买家 end -->
@@ -116,6 +114,8 @@
 		name: "itemDetails",
 		data() {
 			return {
+				commentList: [],
+				commentDetail: '',
 				indicatorDots: true,
 				id: -1,
 				imgArr: [],
@@ -271,18 +271,59 @@
 					_self.isFollow = true;
 				}
 			},
+			async postComment() {
+				console.log("发布评论，内容是" + this.commentDetail);
+				console.log("发布评论，发布人是" + this.user.user_id);
+				console.log("发布评论，商品id是" + this.product.product_id);
+
+				if (this.commentDetail == '') {
+					uni.showToast({
+						icon: 'error',
+						title: '请输入内容'
+					})
+				} else {
+					const res = await myRequest({
+						url: "/api/postComment/",
+						method: "POST",
+						data: {
+							user_id: this.user.user_id,
+							product_id: this.id,
+							commentDetail: this.commentDetail,
+						}
+					})
+					if (res.data.status === 0) {
+						uni.showToast({
+							icon: 'success',
+							title: "发布成功"
+						})
+					}
+				}
+
+
+			},
+			async getAllComment() {
+				const res = await myRequest({
+					// url: "/api/getAllComment?p_id="+ this.id,
+					url: `/api/getAllComment/${this.id}`,
+				})
+				console.log(res.data.message);
+				this.commentList = res.data.message;
+
+			}
 
 		},
 		mounted() {
 			this.getdetail();
 			this.setHistory();
 			this.baseUrl = this.$baseUrl;
+			this.getAllComment();
 		},
 		onLoad(obj) {
 			this.user = this.$getUser();
 			this.id = obj.id;
 			this.findFollow();
 			this.isLogin = this.$checkLogin("", false);
+			this.getAllComment();
 		},
 		onShow() {
 
@@ -292,10 +333,11 @@
 
 <style scoped lang="scss">
 	.itemDetails {
-		image{
+		image {
 			width: 60rpx;
 			height: 60rpx;
 		}
+
 		.swiper {
 			width: 750rpx;
 			height: 380rpx;
@@ -309,10 +351,11 @@
 
 		.follow {
 			display: flex;
-			
+
 			align-items: center;
 			justify-content: center;
-			image{
+
+			image {
 				width: 60rpx;
 				height: 60rpx;
 			}
@@ -363,10 +406,10 @@
 			margin: 30rpx 0;
 		}
 
-		.connect{
+		.connect {
 			font-size: 60rpx;
 		}
-		
+
 		.box {
 			padding: 30rpx;
 			position: relative;
@@ -383,8 +426,8 @@
 				line-height: 80rpx;
 				font-size: 40rpx;
 			}
-			
-			.tip{
+
+			.tip {
 				padding-top: 50rpx;
 
 			}
@@ -400,30 +443,34 @@
 		}
 
 
-		.comment{
-			.tip{
+		.comment {
+			.tip {
 				font-size: 50rpx;
 				padding-left: 20rpx;
-				.post{
+
+				.post {
 					padding-top: 10rpx;
 					display: flex;
 					justify-content: space-between;
 					align-items: center;
-					input{
+
+					input {
 						border: #6c615d 2px solid;
 						height: 80rpx;
 						width: 580rpx;
 					}
-					button{
+
+					button {
 						color: #55aaff;
 					}
 				}
 			}
-			.content{
+
+			.content {
 				.divider {
-				  width: 100%;
-				  height: 1px;
-				  background-color: #ada099;
+					width: 100%;
+					height: 1px;
+					background-color: #ada099;
 				}
 			}
 
@@ -450,25 +497,28 @@
 				width: 40%;
 			}
 
-			.follow{
+			.follow {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				image{
+
+				image {
 					width: 40rpx;
 					height: 40rpx;
 				}
 			}
-			
-			.buy{
+
+			.buy {
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				image{
+
+				image {
 					width: 40rpx;
 					height: 40rpx;
 				}
 			}
+
 			.edit {
 				width: 30%;
 			}
