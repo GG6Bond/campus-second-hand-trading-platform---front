@@ -40,6 +40,27 @@
 		</view>
 
 		<view class="buttom" v-if="status != 2"></view>
+		
+		
+		<view class="comment">
+			<view class="tip">
+				<view class="">
+					评论:
+				</view>
+				
+				<view class="post">
+					<input type="text">
+					<button size="default">发布</button>
+				</view>
+
+			</view>
+			<view class="content" v-for="(item,index) in 5" :key="index">
+				<commentItem></commentItem>
+				<view class="divider" v-if="index != 5-1">
+					
+				</view>
+			</view>
+		</view>
 
 		<view class="buttom-line" v-if="status != 2">
 
@@ -365,6 +386,7 @@
 			
 			.tip{
 				padding-top: 50rpx;
+
 			}
 
 			.detail {
@@ -376,6 +398,37 @@
 				white-space: nowrap;
 			}
 		}
+
+
+		.comment{
+			.tip{
+				font-size: 50rpx;
+				padding-left: 20rpx;
+				.post{
+					padding-top: 10rpx;
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					input{
+						border: #6c615d 2px solid;
+						height: 80rpx;
+						width: 580rpx;
+					}
+					button{
+						color: #55aaff;
+					}
+				}
+			}
+			.content{
+				.divider {
+				  width: 100%;
+				  height: 1px;
+				  background-color: #ada099;
+				}
+			}
+
+		}
+
 
 		.buttom {
 			height: 200rpx;

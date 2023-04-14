@@ -1,7 +1,8 @@
 <!-- 求购商品详情页面 -->
 <template>
 	<view class="content">
-		<view class="name">
+
+		<!-- 		<view class="name">
 			<u-tag text="名称" type="info" />
 			<view class="">
 				{{name}}
@@ -9,7 +10,7 @@
 		</view>
 
 
-		
+
 		<view class="detail">
 			<u-tag text="详情" type="info" />
 			<u-read-more :toggle="true" show-height="100">
@@ -31,7 +32,30 @@
 			<view class="">
 				{{postid}}
 			</view>
+		</view> -->
+
+
+		<view class="name">
+			<view class="tip">
+				商品:
+			</view>
+			<input v-model="name" disabled="true" />
 		</view>
+
+		<view class="detail">
+			<view class="tip">
+				详情:
+			</view>
+			<textarea v-model="deatil" disabled="true" auto-height="true"></textarea>
+		</view>
+		
+		<view class="connect">
+			<view class="tip">
+				联系方式:
+			</view>
+			<input v-model="email" disabled="true" />
+		</view>
+
 	</view>
 </template>
 
@@ -83,28 +107,35 @@
 <style lang="scss">
 	.content {
 
+		
+	
 		// font-size: 50rpx;
 
-		.name {
-			text-align: center;
-			font-size: 60rpx;
+		.tip {
+			padding-left: 30rpx;
+			font-size: 50rpx;
+			color: #1B92FF;
 		}
 
-		u-gap {}
+		input {
+			margin: 30rpx;
+			border: 1rpx solid #ccc;
+			border-radius: 5rpx;
+			width: 90%;
+			height: 60rpx;
+			font-size: 56rpx;
 
-		rich-text {
+		}
+
+		textarea {
+			margin: 30rpx;
+			margin-top: 30rpx;
+			border: 1rpx solid #ccc;
+			border-radius: 5rpx;
+			width: 90%;
+			height: 400rpx;
 			font-size: 40rpx;
 		}
 
-
-		.email {
-			padding-bottom: 30rpx;
-			font-size: 40rpx;
-		}
-
-		.postid {
-			padding-bottom: 30rpx;
-			font-size: 40rpx;
-		}
 	}
 </style>
