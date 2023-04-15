@@ -1,5 +1,3 @@
-
-
 <template>
 	<view class="container">
 		<view class="info-text">
@@ -11,20 +9,20 @@
 </template>
 
 <script>
+	const moment = require('moment');
 	export default {
 		name: "commentItem",
 		data() {
 			return {
-			
 			}
 		},
-		props:{
-			item:{
-				user_id:'',
-				content:'',
-				post_time:''
+		props: {
+			item: {
+				user_id: '',
+				content: '',
+				post_time: ''
 			}
-		}
+		},
 	}
 </script>
 
@@ -47,6 +45,7 @@
 	.name {
 		font-size: 30px;
 		font-weight: bold;
+		color: #999;
 	}
 
 	.content {
@@ -60,6 +59,3 @@
 		color: #999;
 	}
 </style>
-
-
-

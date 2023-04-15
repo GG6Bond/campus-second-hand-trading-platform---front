@@ -56,7 +56,7 @@
 			</view>
 			<view class="content" v-for="(item,index) in commentList" :key="index">
 				<commentItem :item="item"></commentItem>
-				<view class="divider" v-if="index != 5-1">
+				<view class="divider" v-if="index != commentList.length-1">
 
 				</view>
 			</view>
@@ -109,12 +109,16 @@
 	import {
 		myRequest
 	} from "@/util/api.js"
+	const moment = require("moment")
+
+
 
 	export default {
 		name: "itemDetails",
 		data() {
 			return {
 				commentList: [],
+				commentListReverse:[],
 				commentDetail: '',
 				indicatorDots: true,
 				id: -1,
@@ -276,27 +280,42 @@
 				console.log("发布评论，发布人是" + this.user.user_id);
 				console.log("发布评论，商品id是" + this.product.product_id);
 
-				if (this.commentDetail == '') {
+				if (this.commentDetail.trim() == '') {
 					uni.showToast({
 						icon: 'error',
 						title: '请输入内容'
 					})
 				} else {
-					const res = await myRequest({
-						url: "/api/postComment/",
-						method: "POST",
-						data: {
-							user_id: this.user.user_id,
-							product_id: this.id,
-							commentDetail: this.commentDetail,
-						}
-					})
-					if (res.data.status === 0) {
+					// 未登录
+					if(this.user.user_id == undefined)
+					{
+						console.log("未登录");
 						uni.showToast({
-							icon: 'success',
-							title: "发布成功"
+							icon: 'error',
+							title: '请先登录'
 						})
 					}
+						
+					else{
+						const res = await myRequest({
+							url: "/api/postComment/",
+							method: "POST",
+							data: {
+								user_id: this.user.user_id,
+								product_id: this.id,
+								commentDetail: this.commentDetail,
+							}
+						})
+						if (res.data.status === 0) {
+							uni.showToast({
+								icon: 'success',
+								title: "发布成功"
+							})
+							this.commentDetail = ''
+							this.getAllComment();
+						}
+					}
+					
 				}
 
 
@@ -308,6 +327,15 @@
 				})
 				console.log(res.data.message);
 				this.commentList = res.data.message;
+				this.commentListReverse = this.commentList.reverse();
+				this.commentListReverse.forEach((item)=>{
+				
+				const timeStr = moment(item.post_time).format(
+				    'Y-MM-DD HH:mm:ss'
+				)	
+					
+					item.post_time = timeStr;
+				})
 
 			}
 
