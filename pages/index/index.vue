@@ -82,7 +82,7 @@
 							求购商品：
 						</view>
 
-						<view class="allWantBuyList">
+						<view class="allWantBuyList" @click="lookAllWantBuy">
 							点击查看全部>
 						</view>
 					</view>
@@ -389,6 +389,13 @@
 			loolAll() {
 				uni.switchTab({
 					url: "/pages/shoppingList/shoppingList"
+				})
+			},
+			lookAllWantBuy()
+			{
+				console.log('点击了！！！');
+				uni.navigateTo({
+					url:'/pages/allWantBuy/allWantBuy'
 				})
 			},
 

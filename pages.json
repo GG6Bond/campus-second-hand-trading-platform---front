@@ -246,6 +246,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/allWantBuy/allWantBuy",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "全部求购",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
