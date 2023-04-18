@@ -48,7 +48,7 @@
 
 				disableButton: false,
 				buttonText: '获取验证码',
-				remainingTime: 180,
+				remainingTime: 60,
 				id: "",
 				username: "",
 				password: "",

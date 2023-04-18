@@ -1,16 +1,23 @@
 <!-- 登录 -->
 <template>
 	<view class="sign-in">
-		用户名：
+		<view class="tip">
+			用户名：
+		</view>
 		<input v-model="username" type="number" placeholder="请输入手机号" />
-		密码：
+		<view class="tip">
+			密码：
+		</view>
 		<input v-model="password" type="password" placeholder="请输入密码" @keypress.native.enter="check" />
 		<button class="btn" @click="check">登录</button>
-		<view class="bottom-box">还没有账号？点击注册→ <span type="default" @click="gotoPage" class="register">注册</span></view>
-
-		<!-- #ifdef MP-WEIXIN -->
-		<!-- <wx-login></wx-login> -->
-		<!-- #endif -->
+		
+		<view class="forgetPwd" @click="gotoForgetPwd">
+			忘记密码
+		</view>
+		<view class="buttom_up">
+			<view class="bottom-box">还没有账号？点击注册→ <span type="default" @click="gotoPage" class="register">注册</span>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -18,9 +25,7 @@
 	import {
 		myRequest
 	} from "@/util/api.js"
-	// #ifdef MP-WEIXIN
-	import wxLogin from "@/pages/components/wxLogin/wxLogin.vue"
-	// #endif
+
 	export default {
 		data() {
 			return {
@@ -28,11 +33,6 @@
 				password: ""
 			};
 		},
-		// #ifdef MP-WEIXIN
-		components: {
-			wxLogin
-		},
-		// #endif
 		methods: {
 			check() {
 				if (!this.username) {
@@ -118,16 +118,29 @@
 				uni.redirectTo({
 					url: "../signUp/signUp"
 				})
+			},
+			gotoForgetPwd(){
+				console.log('点击了忘记密码');
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
+	
+
+	
 	.sign-in {
-		margin: 40rpx;
+		
+		margin: 60rpx;
 		line-height: 80rpx;
 		font-size: 50rpx;
+
+		.tip {
+			font-size: 40rpx;
+			color: #55aa7f;
+			font-weight: bold;
+		}
 
 		input {
 			border: 1px solid #3F536E;
@@ -138,18 +151,33 @@
 
 
 		.btn {
-			margin-top: 50rpx;
+			margin-top: 80rpx;
+			// color: #007AFF;
+			background-color: #59b485;
+		}
+		
+		.forgetPwd{
+			font-size: 30rpx;
+			color: #55aaff;
+			text-align: right;
+			
 		}
 
-		.bottom-box {
-			height: 300rpx;
-			line-height: 300rpx;
-			font-size: 50rpx;
-			position: fixed;
-			bottom: 0;
-
-			.register {
-				color: #007AFF;
+		.buttom_up{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.bottom-box {
+				height: 300rpx;
+				line-height: 300rpx;
+				font-size: 40rpx;
+				position: fixed;
+				bottom: 0;
+				color: #55557f;
+			
+				.register {
+					color: #007AFF;
+				}
 			}
 		}
 	}
