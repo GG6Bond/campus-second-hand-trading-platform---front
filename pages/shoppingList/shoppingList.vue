@@ -127,7 +127,9 @@
 		onShow() {
 			this.isLogin = this.$checkLogin("", false);
 			this.user = this.$getUser();
-			this.changeList()
+			this.changeList();
+			this.getProductList();
+			console.log('tab');
 		}
 	}
 </script>

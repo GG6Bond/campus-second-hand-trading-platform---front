@@ -53,7 +53,7 @@
 					}
 				})
 				// console.log(res);
-				if (res.data.status == 0)[
+				if (res.data.status == 0){
 					uni.showToast({
 						title: "购买成功,请及时联系发布者",
 						success() {
@@ -64,7 +64,20 @@
 							}, 3000)
 						}
 					})
-				]
+				}
+				if(res.data == 'yscErr')
+				{
+					uni.showToast({
+						icon:'error',
+						title:'慢了一步，已售出',
+						success(){
+							uni.switchTab({
+								url:"../shoppingList/shoppingList"
+							})
+						}
+					},2000)
+
+				}
 			},
 			async getdetail() {
 				const res = await myRequest({
