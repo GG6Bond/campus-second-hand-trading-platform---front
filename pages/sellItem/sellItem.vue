@@ -1,9 +1,6 @@
 <!-- 我的已售出页面 -->
 <template>
 	<view class="sellItem">
-		<view class="">
-			000
-		</view>
 		<view v-if="sellItem.length === 0" class="title">还没有卖出商品</view>
 		<shoppingListItem :data="sellItem" :showStatus="true"></shoppingListItem>
 	</view>

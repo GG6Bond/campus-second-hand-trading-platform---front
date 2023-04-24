@@ -8,9 +8,9 @@
 
 
 		<view class="tip">
-			用户名：
+			邮箱：
 		</view>
-		<input v-model="username" type="text" placeholder="请输入用户名" />
+		<input v-model="username" type="text" placeholder="请输入邮箱" />
 
 
 		<view class="tip">

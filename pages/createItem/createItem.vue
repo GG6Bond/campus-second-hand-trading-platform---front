@@ -74,6 +74,8 @@
 				<text>{{isLogin ? " 发布" : "请登录后进行操作"}}</text>
 			</button>
 		</form>
+		
+		<button @click="lookDetail">test</button>
 	</view>
 </template>
 
@@ -133,7 +135,8 @@
 				
 				
 				// [...this.imgArr, ...res.tempFilePaths] 是扩展运算符的使用，
-				// 可以将原来的 this.imgArr 数组和新的 res.tempFilePaths 数组合并成一个新的数组，
+				// 可以将原来的 this.imgArr 数组和新的 res.tempFilePath 图片吗的本地文件列表
+				 // 数组合并成一个新的数组，
 				// 然后将其赋值给 this.imgArr。这样做可以避免覆盖 this.imgArr 数组里现有的元素。
 				uni.chooseImage({
 					count: 9 - this.imgArr.length,
@@ -203,9 +206,12 @@
 					})
 				}
 			},
+			// 上传文件
 			async uploadPic(time) {
 				let index = 0
-
+				// 遍历每一项 将他们上传到服务器，为了保证上传顺序，
+				// 使用promise对象的方式来控制上传流程
+				
 				for (let i of this.imgArr) {
 					await new Promise((resolve, reject) => {
 						uni.uploadFile({
@@ -227,6 +233,9 @@
 					})
 					index++;
 				}
+			},
+			lookDetail(){
+				console.log(this.imgArr);
 			}
 		},
 	}

@@ -2,7 +2,7 @@
 <template>
 	<view class="sign-in">
 		<view class="tip">
-			用户名：
+			手机号：
 		</view>
 		<input v-model="username" type="number" placeholder="请输入手机号" />
 		<view class="tip">

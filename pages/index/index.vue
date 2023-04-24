@@ -232,7 +232,7 @@
 				</view>
 
 
-				<button @click="testPage">测试按钮</button>
+				<!-- <button @click="testPage">测试按钮</button> -->
 			</view>
 		</view>
 

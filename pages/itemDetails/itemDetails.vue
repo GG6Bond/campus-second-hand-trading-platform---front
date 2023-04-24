@@ -55,11 +55,16 @@
 
 			</view>
 			<view class="content" v-for="(item,index) in commentList" :key="index">
-				<commentItem :item="item"></commentItem>
+				<commentItem :item="item" :localUsr="user.user_id"></commentItem>
+				<view class="del" v-if="user.user_id == item.user_id" @click="delThisComment(index)">删除</view>
 				<view class="divider" v-if="index != commentList.length-1">
 
 				</view>
 			</view>
+		</view>
+
+		<view class="block">
+
 		</view>
 
 		<view class="buttom-line" v-if="status != 2">
@@ -118,7 +123,7 @@
 		data() {
 			return {
 				commentList: [],
-				commentListReverse:[],
+				commentListReverse: [],
 				commentDetail: '',
 				indicatorDots: true,
 				id: -1,
@@ -146,6 +151,40 @@
 			}
 		},
 		methods: {
+			async delThisComment(index) {
+				// console.log(index);
+				console.log(this.commentList[index].id);
+				let comment_id = this.commentList[index].id;
+				const res = await myRequest({
+					url: "/api/delComment",
+					method: "POST",
+					data: {
+						id: comment_id,
+					}
+				})
+				// console.log(res.data);
+				if (res.data.status === 0) {
+					uni.showModal({
+						title: '提示',
+						content: '确定要删除吗？',
+						success: res => {
+							if (res.confirm) {
+								console.log('用户点击确定');
+								this.getAllComment();
+								uni.showToast({
+									icon: 'success',
+									title: "删除成功"
+								})
+							} else if (res.cancel) {
+								console.log('用户点击取消');
+							}
+						}
+					});
+
+
+				}
+			},
+
 			async getdetail() {
 				const res = await myRequest({
 					url: "/api/getProductDetail/" + this.id,
@@ -287,16 +326,13 @@
 					})
 				} else {
 					// 未登录
-					if(this.user.user_id == undefined)
-					{
+					if (this.user.user_id == undefined) {
 						console.log("未登录");
 						uni.showToast({
 							icon: 'error',
 							title: '请先登录'
 						})
-					}
-						
-					else{
+					} else {
 						const res = await myRequest({
 							url: "/api/postComment/",
 							method: "POST",
@@ -315,7 +351,7 @@
 							this.getAllComment();
 						}
 					}
-					
+
 				}
 
 
@@ -328,12 +364,12 @@
 				console.log(res.data.message);
 				this.commentList = res.data.message;
 				this.commentListReverse = this.commentList.reverse();
-				this.commentListReverse.forEach((item)=>{
-				
-				const timeStr = moment(item.post_time).format(
-				    'Y-MM-DD HH:mm:ss'
-				)	
-					
+				this.commentListReverse.forEach((item) => {
+
+					const timeStr = moment(item.post_time).format(
+						'Y-MM-DD HH:mm:ss'
+					)
+
 					item.post_time = timeStr;
 				})
 
@@ -423,7 +459,7 @@
 			}
 
 			.discrict {
-				width: 14%;
+				width: 95rpx;
 				border: 1px solid #000000;
 				border-radius: 50rpx;
 				padding: 0 10rpx;
@@ -495,6 +531,15 @@
 			}
 
 			.content {
+				.del {
+					margin-top: 6px;
+					font-size: 17px;
+					text-align: left;
+					padding-left: 70rpx;
+					padding-bottom: 20rpx;
+					color: #4489cd;
+				}
+
 				.divider {
 					width: 100%;
 					height: 1px;
@@ -504,11 +549,15 @@
 
 		}
 
+		.block {
+			height: 150rpx;
+		}
 
 		.buttom {
 			height: 200rpx;
 			width: 1rpx;
 		}
+
 
 		.buttom-line {
 			width: 100%;

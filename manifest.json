@@ -44,7 +44,9 @@
                 ]
             },
             /* ios打包配置 */
-            "ios" : {},
+            "ios" : {
+                "dSYMs" : false
+            },
             /* SDK配置 */
             "sdkConfigs" : {
                 "payment" : {
@@ -60,7 +62,8 @@
                         "appsecret" : "060d6026b78c3f217b0d2e30e9682163",
                         "UniversalLinks" : ""
                     }
-                }
+                },
+                "ad" : {}
             },
             "splashscreen" : {
                 "useOriginalMsgbox" : true
