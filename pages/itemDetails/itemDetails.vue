@@ -469,7 +469,8 @@
 			top: 0;
 
 			.name {
-				font-size: 60rpx;
+				font-size: 56rpx;
+				color: #555500;
 			}
 
 			.price-num {
@@ -482,6 +483,8 @@
 
 			.tip {
 				padding-top: 50rpx;
+				color: #00aa7f;
+				font-size: 40rpx;
 
 			}
 
@@ -498,8 +501,9 @@
 
 		.comment {
 			.tip {
-				font-size: 50rpx;
+				font-size: 40rpx;
 				padding-left: 20rpx;
+				color: #00aa7f;
 
 				.post {
 					padding-top: 10rpx;
@@ -514,7 +518,9 @@
 					}
 
 					button {
-						color: #55aaff;
+						height: 86rpx;
+						color: #000000;
+						background-color: #00a6f9;
 					}
 				}
 			}

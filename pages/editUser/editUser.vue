@@ -12,12 +12,12 @@
 			return {
 				user: [],
 				rowTextEnter: [{
-						text: "昵称",
+						text: "手机号",
 						righttext: "",
 						url: "../changeUser/changeUser?index="
 					},
 					{
-						text: "手机号",
+						text: "昵称",
 						righttext: "",
 						url: "../changeUser/changeUser?index="
 					},
@@ -26,10 +26,6 @@
 						righttext: "",
 						url: "../changeUser/changeUser?index="
 					},
-					// {
-					// 	text: "用户权限",
-					// 	righttext: ""
-					// },
 				]
 			};
 		},

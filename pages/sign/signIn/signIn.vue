@@ -23,6 +23,7 @@
 
 <script>
 	import {
+		cleanUser,
 		myRequest
 	} from "@/util/api.js"
 
@@ -82,34 +83,7 @@
 
 				}
 			},
-			// async getPassword() {
-			// 	const res = await myRequest({
-			// 		url: "/api/getuserinfo/" + this.username
-			// 	})
-			// 	if (res.data.message.length === 0) {
-			// 		uni.showToast({
-			// 			title: "用户不存在",
-			// 			icon: "error",
-			// 		})
-			// 		return;
-			// 	}
-			// 	if (this.password === res.data.message[0].user_password) {
-			// 		this.setUser(res.data.message[0]);
-			// 		uni.showToast({
-			// 			title: "登录成功！",
-			// 			icon: "none",
-			// 		})
-			// 		uni.switchTab({
-			// 			url: "../../index/index"
-			// 		})
 
-			// 	} else {
-			// 		uni.showToast({
-			// 			title: "密码错误",
-			// 			icon: "error"
-			// 		})
-			// 	}
-			// },
 			setUser(user) {
 				uni.setStorageSync('user', user);
 				uni.setStorageSync('isLogin', true);

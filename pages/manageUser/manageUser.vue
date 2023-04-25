@@ -1,9 +1,9 @@
 <template>
 	<view class="manageUser">
 		<userList :data="userList" @refresh="getUserList"></userList>
-<!-- 		<user-list :data="userList" @refresh="getUserList"></user-list>
+		<!-- 		<user-list :data="userList" @refresh="getUserList"></user-list>
 		<user-list :data="userList" @refresh="getUserList"></user-list> -->
-		
+
 	</view>
 </template>
 
@@ -27,6 +27,9 @@
 			}
 		},
 		onLoad() {
+
+
+
 			this.getUserList();
 		},
 		onShow() {
@@ -36,7 +39,5 @@
 </script>
 
 <style lang="scss" scoped>
-.manageUser {
-	
-}
+	.manageUser {}
 </style>

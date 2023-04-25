@@ -68,6 +68,7 @@
 
 <script>
 	import {
+		cleanUser,
 		myRequest
 	} from "@/util/api.js"
 
@@ -191,10 +192,18 @@
 
 		},
 		onShow() {
+			// cleanUser();
 			this.user = this.$getUser();
 			if (this.user && this.user.user_role == 2) {
 				this.getUserInfoNum();
 			}
+		},
+		onLoad() {
+			// console.log('开启定时器');
+			// setTimeout(() => {
+			// 	console.log('开启定时器');
+			// 	cleanUser();
+			// }, 3000)
 		}
 	}
 </script>

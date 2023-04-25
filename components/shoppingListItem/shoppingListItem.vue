@@ -4,7 +4,7 @@
 		<view class="shoppingListItem" v-for="(items, index) in data" :key="index"
 			:class="index != data.length - 1 ? 'bottom-line' : ''" 
 			@click="gotoPage(items.product_id)"
-			@longpress="myLongPress(items.product_id)">
+			@longpress="myLongPress(items.history_id)">
 		
 			<view class="left-box">
 				<image :src="baseUrl + items.imgArr" mode="aspectFit" class="img"></image>
@@ -52,7 +52,7 @@
 		methods: {
 			// 点击跳转到详情页
 			gotoPage(id) {
-				// console.log(id);
+				console.log(id);
 				uni.navigateTo({
 					url: '/pages/itemDetails/itemDetails?id=' + id,
 				});
@@ -75,7 +75,7 @@
 						return "已完成"
 				}
 			},
-			myLongPress(productid) {
+			myLongPress(h_id) {
 				let _self = this;
 				if (!this.delInfo) {
 					return
@@ -88,12 +88,12 @@
 					success(res) {
 						// console.log(res)
 						if (res.confirm == true) {
-							_self.delHistory(productid);
+							_self.delHistory(h_id);
 						}
 					}
 				})
 			},
-			async delHistory(productid) {
+			async delHistory(h_id) {
 				let _self = this;
 
 				const res = await myRequest({
@@ -101,7 +101,7 @@
 					method: "POST",
 					data: {
 						userid: _self.delInfo.userid,
-						productid: productid
+						history_id: h_id
 					}
 				})
 				// console.log(res.data.status);

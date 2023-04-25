@@ -21,7 +21,7 @@
 				text: "",
 				message: -1,
 				username: "",
-				showText: ["用户名：", "手机号：", "密码："]
+				showText: ["手机号：","用户名：",  "密码："]
 			};
 		},
 		methods: {

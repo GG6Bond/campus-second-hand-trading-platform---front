@@ -227,11 +227,6 @@
 				</view>
 
 
-				<view class="login">
-					<!-- <wx-login></wx-login> -->
-				</view>
-
-
 				<!-- <button @click="testPage">测试按钮</button> -->
 			</view>
 		</view>
@@ -248,6 +243,7 @@
 
 <script>
 	import {
+		cleanUser,
 		myRequest
 	} from "@/util/api.js"
 	import wantBuyDeatilVue from "../wantBuyDeatil/wantBuyDeatil.vue";
