@@ -56,7 +56,7 @@
 			</view>
 			<view class="content" v-for="(item,index) in commentList" :key="index">
 				<commentItem :item="item" :localUsr="user.user_id"></commentItem>
-				<view class="del" v-if="user.user_id == item.user_id" @click="delThisComment(index)">删除</view>
+				<view class="del" v-if="user.user_id == item.user_id" @click="del(index)">删除</view>
 				<view class="divider" v-if="index != commentList.length-1">
 
 				</view>
@@ -164,26 +164,30 @@
 				})
 				// console.log(res.data);
 				if (res.data.status === 0) {
-					uni.showModal({
-						title: '提示',
-						content: '确定要删除吗？',
-						success: res => {
-							if (res.confirm) {
-								console.log('用户点击确定');
-								this.getAllComment();
-								uni.showToast({
-									icon: 'success',
-									title: "删除成功"
-								})
-							} else if (res.cancel) {
-								console.log('用户点击取消');
-							}
-						}
-					});
-
-
+					uni.showToast({
+						icon: 'success',
+						title: "删除成功"
+					})
+					this.getAllComment();
 				}
 			},
+
+			async del(index) {
+				uni.showModal({
+					title: '提示',
+					content: '确定要删除吗？',
+					success: res => {
+						if (res.confirm) {
+							console.log('用户点击确定');
+							this.delThisComment(index);
+						}
+						if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
+			},
+
 
 			async getdetail() {
 				const res = await myRequest({
@@ -425,21 +429,6 @@
 			}
 		}
 
-		// .icon-not-favorite:before {
-		// 	content: '\e909';
-		// 	transition: linear 0.5s;
-		// }
-
-		// .icon-favorite:before {
-		// 	content: '\e907';
-		// 	color: #ff0000;
-		// 	transition: linear 0.5s;
-		// }
-
-		// .icon-ban:before {
-		// 	content: '\e901';
-		// }
-
 		.owner {
 			padding: 0 30rpx;
 			margin: 10rpx 0;
@@ -459,7 +448,7 @@
 			}
 
 			.discrict {
-				width: 95rpx;
+				// width: 95rpx;
 				border: 1px solid #000000;
 				border-radius: 50rpx;
 				padding: 0 10rpx;
