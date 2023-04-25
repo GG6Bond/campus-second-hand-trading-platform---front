@@ -12,7 +12,7 @@
 			<image class="image" src="../../static//userpage/member.png" mode="aspectFill"></image>
 			<span class="id">{{"登录后显示"}}</span>
 		</view>
-		
+
 		<!-- 登录 并且角色为普通用户，进行相应的跳转 -->
 		<view v-if="user && user.user_role === 2" class="first-menu">
 			<view class="buyandsell">
@@ -39,8 +39,8 @@
 			</view>
 			<rowTextEnter :data="rowTextEnter"></rowTextEnter>
 		</view>
-		
-		
+
+
 		<!-- 角色为超级管理员 -->
 		<view class="manager" v-if="user.user_role === 0">
 			<rowTextEnter :data="superManager"></rowTextEnter>
@@ -70,13 +70,12 @@
 	import {
 		myRequest
 	} from "@/util/api.js"
-	
+
 	export default {
 		data() {
 			return {
 				user: {},
-				rowTextEnter: [
-					{
+				rowTextEnter: [{
 						text: "在这里已经赚了：￥123",
 						url: "../userHomePage/userHomePage"
 					},
@@ -99,15 +98,14 @@
 						url: "../manageUser/manageUser"
 					},
 					{
-						text:"公告管理",
-						url:"../postNotice/postNotice"
+						text: "公告管理",
+						url: "../postNotice/postNotice"
 					}
 				],
 				manager: [{
-						text: "全部商品",
-						url: "../allProduct/allProduct"
-					}
-				],
+					text: "全部商品",
+					url: "../allProduct/allProduct"
+				}],
 				signOut: [{
 					text: "注销",
 					url: "signOut"
@@ -243,8 +241,8 @@
 			margin: 50rpx 0;
 			display: flex;
 			text-align: center;
-			
-			image{
+
+			image {
 				width: 80rpx;
 				height: 80rpx;
 			}
@@ -264,9 +262,9 @@
 			.history {
 				flex-grow: 1;
 			}
-			
-			
-			
+
+
+
 		}
 
 		.manager {
@@ -283,19 +281,14 @@
 
 		.notice {
 			position: absolute;
-			// #ifdef MP-WEIXIN
-			top: 25rpx;
-			right: 25rpx;
-			// #endif
-			// #ifdef H5
-			top: -66rpx;
-			right: 3%;
-			// #endif
+			top: -64rpx;
+			right: 18rpx;
 
 			.img {
 				width: 24px;
 				height: 24px;
 				z-index: 999;
+				right: 15rpx;
 			}
 
 			.red {

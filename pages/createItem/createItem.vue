@@ -75,7 +75,7 @@
 			</button>
 		</form>
 		
-		<button @click="lookDetail">test</button>
+		<!-- <button @click="lookDetail">test</button> -->
 	</view>
 </template>
 
@@ -263,6 +263,8 @@
 				.left-text {
 					width: 20%;
 					margin-right: 30rpx;
+					color: #376fa7;
+					font-size: 40rpx;
 					display: inline-block;
 					text-align: right;
 				}
@@ -393,7 +395,7 @@
 
 		.submit {
 			margin: 0 50rpx 30rpx;
-			width: 80%;
+			// width: 80%;
 			height: 100rpx;
 			display: flex;
 			align-items: center;
