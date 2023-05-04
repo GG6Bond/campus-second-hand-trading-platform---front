@@ -110,6 +110,7 @@
 		.none {
 			padding: 50rpx;
 			text-align: center;
+			color: #54547e;
 		}
 
 		.shoppingListItemUpDown {
