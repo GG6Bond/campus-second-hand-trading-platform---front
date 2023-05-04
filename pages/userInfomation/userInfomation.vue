@@ -77,6 +77,9 @@
 			return {
 				user: {},
 				rowTextEnter: [{
+						text: "消息(5)",
+						url: "../tradingProduct/tradingProduct"
+					}, {
 						text: "在这里已经赚了：￥123",
 						url: "../userHomePage/userHomePage"
 					},
@@ -117,23 +120,24 @@
 				}],
 				// 菜单
 				info: [{
-					text: "帮助与支持",
-					url: "../about/about"
-				}, {
-					text: "使用规约",
-					url: "../about/about"
-				}, {
-					text: "问题反馈",
-					url: "../about/about"
-				}
-				// ,{
-				// 	text: "商务合作",
-				// 	url: "../about/about"
-				// }
-				, {
-					text: "关于我们",
-					url: "../about/about"
-				}, ],
+						text: "帮助与支持",
+						url: "../about/about"
+					}, {
+						text: "使用规约",
+						url: "../about/about"
+					}, {
+						text: "问题反馈",
+						url: "../about/about"
+					}
+					// ,{
+					// 	text: "商务合作",
+					// 	url: "../about/about"
+					// }
+					, {
+						text: "关于我们",
+						url: "../about/about"
+					},
+				],
 				sellItem: [],
 				buyItem: [],
 				historyList: [],
@@ -179,7 +183,8 @@
 					}
 				})
 				this.allData = res.data.message;
-				this.rowTextEnter[0].text = "在这里已经赚了：￥" + this.allData.price;
+				this.rowTextEnter[0].text = "未读消息 : " + '( ' + this.allData.trading + ' )';
+				this.rowTextEnter[1].text = "在这里已经赚了：￥" + this.allData.price;
 				// console.log(res)
 			},
 			notice() {
