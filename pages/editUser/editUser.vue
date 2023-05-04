@@ -1,5 +1,7 @@
 <!-- 用户信息编辑页面 -->
 
+<!-- todo 重构该页面 -->
+
 <template>
 	<view class="editUser">
 		<rowTextEnter :data="rowTextEnter"></rowTextEnter>

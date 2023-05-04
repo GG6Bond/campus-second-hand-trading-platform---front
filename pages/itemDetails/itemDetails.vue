@@ -513,6 +513,7 @@
 
 					input {
 						border: #6c615d 2px solid;
+						border-radius: 50rpx;
 						height: 80rpx;
 						width: 580rpx;
 					}

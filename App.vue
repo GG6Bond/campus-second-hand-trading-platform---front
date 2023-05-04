@@ -19,9 +19,6 @@
 <style lang="scss">
 	/*每个页面公共css */
 
-	/* 字体图标 */
-	/* @import url("@/static/font/style.css"); */
-	
 	@import "uview-ui/index.scss";
 	// @import "uni_modules/uview-ui/index.scss";
 
