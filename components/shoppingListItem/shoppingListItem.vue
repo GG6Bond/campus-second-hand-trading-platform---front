@@ -22,7 +22,10 @@
 					<!-- 显示商品状态 -->
 					<view class="date-status">
 						<view class="date">日期：{{formatDate(items.product_id)}}</view>
-						<view class="status" v-if="showStatus">{{status(items.product_status)}}</view>
+						<!-- <view class="status" v-if="showStatus">{{status(items.product_status)}}</view> -->
+						<view class="status1" v-if="status(items.product_status) === '已上架'">{{status(items.product_status)}}</view>
+						<view class="status2" v-if="status(items.product_status) === '交易中'">{{status(items.product_status)}}</view>
+						<view class="status3" v-if="status(items.product_status) === '已完成'">{{status(items.product_status)}}</view>
 					</view>
 				</view>
 			</view>
@@ -179,15 +182,24 @@
 
 				.date-status {
 					display: flex;
-					color: #cccccc;
-					font-size: 15rpx;
+					color: #102132;
+					font-size: 30rpx;
+					padding-top: 20rpx;
 					line-height: 40rpx;
 					width: 100%;
 					justify-content: space-between;
 
 					.date {}
 
-					.status {}
+					.status1 {
+						color: #000;
+					}
+					.status2 {
+						color: #d10000;
+					}
+					.status3 {
+						color: #00aa00;
+					}
 				}
 			}
 		}

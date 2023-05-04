@@ -63,6 +63,11 @@
 			<image src="../../static/userpage/notice.png" mode="aspectFill" class="img"></image>
 			<span class="red" v-if="allData.trading != 0">{{allData.trading}}</span>
 		</view>
+
+		<!-- <span class="android_red" v-if="allData.trading != 0">{{allData.trading}}</span> -->
+		<!-- #ifdef APP-ANDROID -->
+		<span class="android_red" v-if="allData.trading != 0">{{allData.trading}}</span>
+		<!-- #endif -->
 	</view>
 </template>
 
@@ -322,6 +327,24 @@
 				border-radius: 100rpx;
 				text-align: center;
 			}
+
+
+		}
+
+		.android_red {
+			position: absolute;
+			top: 38%;
+			right: 10%;
+			background-color: #f30004;
+			color: #FFFFFF;
+			z-index: 999;
+			font-size: 12px;
+			width: 50rpx;
+			height: 30rpx;
+			line-height: 30rpx;
+			border: 1px solid #f30004;
+			border-radius: 20rpx;
+			text-align: center;
 		}
 	}
 </style>
