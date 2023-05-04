@@ -20,24 +20,9 @@
 				</swiper>
 
 
-				<!-- <u-swiper :list="list3" indicator indicatorMode="line" circular></u-swiper> -->
-
-
-				<!-- <view class="search"> -->
-				<!-- <searchBar @searchResult="getResult"></searchBar> -->
-				<!-- <search-bar @searchResult="getResult"></search-bar> -->
-				<!-- </view> -->
-
 				<view class="hint">
 					在本平台发布商品请遵守相关法律法规，严禁发布违法信息。
 				</view>
-
-				<!-- 		<view class="nav">
-					<view class="nav-item" v-for="(item,index) in navData" :key="index" @click="gotoClassify(index)">
-						<view class="icon" :class="item.class"></view>
-						<text>{{item.text}}</text>
-					</view>
-				</view> -->
 
 
 				<view class="nav">

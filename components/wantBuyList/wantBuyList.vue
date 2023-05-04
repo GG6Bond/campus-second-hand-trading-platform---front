@@ -2,7 +2,7 @@
 	<view class="wantBuyItem">
 
 		<view class="left_pic">
-			<image src="../../static/indexpage/qiugou.png" mode="aspectFill"></image>
+			<image src="../../static/indexpage/qiugou.png" mode="aspectFit"></image>
 		</view>
 
 		<view class="right_content">
@@ -28,7 +28,7 @@
 		props: {
 			item: {
 				wantBuyName: '',
-				wantBuyDetail:'',
+				wantBuyDetail: '',
 				email: '',
 				id: 1
 			}
@@ -43,17 +43,30 @@
 
 <style lang="scss">
 	.wantBuyItem {
-		height: 200rpx;
+		height: 190rpx;
 		display: flex;
-		padding: 20rpx;
+		// padding: 20rpx;
 
 
-		.left_pic {}
+		.left_pic {
+			// height: 200px;
+			// width: 240px;
+
+			image {
+				height: 180rpx;
+				width: 240rpx;
+				// height: 100%;
+				// width: 100%;
+				padding-left: 30rpx;
+
+			}
+		}
 
 		.right_content {
-			padding-left: 20rpx;
+			padding-left: 30rpx;
 
 			.wantBuyName {
+				padding-top: 20rpx;
 				font-size: 50rpx;
 				width: 200px;
 				overflow: hidden;
@@ -69,21 +82,6 @@
 				white-space: nowrap;
 
 			}
-		}
-	}
-
-
-
-
-
-	image {
-		height: 150rpx;
-		width: 240rpx;
-		padding-left: 30rpx;
-
-		img {
-			height: 100%;
-			width: 100%;
 		}
 	}
 </style>
