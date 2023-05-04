@@ -1,8 +1,9 @@
-<!-- tab栏我的也页面 -->
+<!-- tab栏我的页面 -->
 <template>
 	<view class="userInfomation">
 		<!-- 登录显示 顶部头像 昵称 箭头 -->
-		<view class="user" @click="gotoPage('user')" v-if="user">
+		<!-- <view class="user" @click="gotoPage('user')" v-if="user"> -->
+		<view class="user" @click="editUserInformation" v-if="user">
 			<image class="image" src="../../static//userpage/user.jpg" mode="aspectFill"></image>
 			<span class="id">{{user.user_name}}</span>
 			<span class="right-arrow">&gt;</span>
@@ -134,10 +135,6 @@
 						text: "问题反馈",
 						url: "../about/about"
 					}
-					// ,{
-					// 	text: "商务合作",
-					// 	url: "../about/about"
-					// }
 					, {
 						text: "关于我们",
 						url: "../about/about"
@@ -160,6 +157,14 @@
 		},
 
 		methods: {
+			
+			editUserInformation()
+			{
+				console.log('点击了头像栏，进入修改用户信息页面');
+				uni.navigateTo({
+					url:"../editUserInformation/editUserInformation"
+				})
+			},
 			// 进行页面的相应跳转
 			gotoPage(page) {
 				let url;

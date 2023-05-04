@@ -397,6 +397,7 @@
 			margin: 0 50rpx 30rpx;
 			// width: 80%;
 			height: 100rpx;
+			background-color: #ffffff;
 			display: flex;
 			align-items: center;
 			justify-content: center;

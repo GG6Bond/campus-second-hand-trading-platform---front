@@ -10,7 +10,7 @@
 		<!-- 轮播图 end -->
 		<!-- 卖家信息 start -->
 		<view class="owner">
-			<uni-icons class="head" type="person-filled" size="45" color=""></uni-icons>
+			<uni-icons class="head" type="person-filled" size="36" color=""></uni-icons>
 			<view class="owner-name">{{ownerName}}</view>
 			<view class="discrict">
 				{{discrictArr[discrict]}}

@@ -255,6 +255,42 @@
             }
             
         }
+        ,{
+            "path" : "pages/editUserInformation/editUserInformation",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "用户信息",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/editNickName/editNickName",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改昵称",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/editEmail/editEmail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改用户密码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/editPwd/editPwd",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改密码",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
