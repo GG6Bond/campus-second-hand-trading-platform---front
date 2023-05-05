@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 
-		<view class="phone">
+		<view class="phone" @click="">
 			<view class="name">
 				手机:
 			</view>
@@ -27,7 +27,7 @@
 
 		<view class="bottom-line"></view>
 
-		<view class="bottom-line"></view>
+		<!-- <view class="bottom-line"></view> -->
 
 
 		<view class="email" @click="gotoPage_editEmail">
