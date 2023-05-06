@@ -1,8 +1,8 @@
 // 发送请求
 // export const BASE_URL = "http://127.0.0.1:8880";
-// export const BASE_URL = "http://127.0.0.1:9001";
+export const BASE_URL = "http://127.0.0.1:9001";
 
-export const BASE_URL = "http://39.101.122.139:9001";
+// export const BASE_URL = "http://39.101.122.139:9001";
 // export const BASE_URL = "http://192.168.1.104:8888";
 // export const BASE_URL = "http://192.168.2.100:8888/";
 export const myRequest = (options) => {

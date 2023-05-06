@@ -2,14 +2,14 @@
 <template>
 	<view class="sign-in">
 		<view class="tip">
-			请输入昵称：
+			昵称：
 		</view>
 		<input v-model="nickName" type="text" placeholder="请输入昵称" />
-		
+
 		<view class="ps">
 			昵称长度需要为0-15个字符
 		</view>
-		
+
 		<button class="btn" @click="changeNickName">修改</button>
 
 	</view>
@@ -24,28 +24,29 @@
 	export default {
 		data() {
 			return {
-				nickName:''
+				nickName: ''
 			};
 		},
 		methods: {
-			changeNickName()
-			{
+			changeNickName() {
 				console.log(this.nickName);
-				if(this.nickName.trim() == '' || this.nickName.length > 15)
-				{
-					console.log('昵称不合法！');
+				if (this.nickName.trim() == '' || this.nickName.length > 15) {
+					// console.log('昵称不合法！');
+					uni.showToast({
+						icon: "error",
+						title: '昵称不合法'
+					})
 				}
+
+
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	
-
-	
 	.sign-in {
-		
+
 		margin: 60rpx;
 		line-height: 80rpx;
 		font-size: 50rpx;
@@ -63,7 +64,7 @@
 			padding: 10rpx;
 		}
 
-		.ps{
+		.ps {
 			font-size: 26rpx;
 			color: #ff0000;
 		}
@@ -73,7 +74,7 @@
 			// color: #007AFF;
 			background-color: #b0b0b0;
 		}
-		
-		
+
+
 	}
 </style>
