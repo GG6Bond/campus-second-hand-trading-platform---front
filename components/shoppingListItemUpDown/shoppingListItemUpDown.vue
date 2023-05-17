@@ -58,6 +58,7 @@
 			},
 			myLongPress(productid) {
 				let _self = this;
+				console.log('delete' + productid);
 				if (!this.delInfo) {
 					return
 				}

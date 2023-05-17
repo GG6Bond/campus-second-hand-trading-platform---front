@@ -291,6 +291,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/notice/notice",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "全部公告",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

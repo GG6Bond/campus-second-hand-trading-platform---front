@@ -4,7 +4,7 @@
 		<!-- 登录显示 顶部头像 昵称 箭头 -->
 		<!-- <view class="user" @click="gotoPage('user')" v-if="user"> -->
 		<view class="user" @click="editUserInformation" v-if="user">
-			<image class="image" src="../../static//userpage/user.jpg" mode="aspectFill"></image>
+			<image class="image" src="../../static//userpage/user_H5.jpg" mode="aspectFill"></image>
 			<span class="id">{{user.user_name}}</span>
 			<span class="right-arrow">&gt;</span>
 		</view>
@@ -69,6 +69,9 @@
 		<!-- #ifdef APP-ANDROID -->
 		<span class="android_red" v-if="allData.trading != 0">{{allData.trading}}</span>
 		<!-- #endif -->
+		
+		<!-- <span class="android_red" v-if="allData.trading != 0">{{allData.trading}}</span> -->
+		
 	</view>
 </template>
 
@@ -126,8 +129,8 @@
 				}],
 				// 菜单
 				info: [{
-						text: "帮助与支持",
-						url: "../about/about"
+						text: "全部公告",
+						url: "../notice/notice"
 					}, {
 						text: "使用规约",
 						url: "../about/about"

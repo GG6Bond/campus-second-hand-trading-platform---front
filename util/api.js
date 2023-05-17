@@ -1,10 +1,9 @@
 // 发送请求
-// export const BASE_URL = "http://127.0.0.1:8880";
-export const BASE_URL = "http://127.0.0.1:9001";
 
-// export const BASE_URL = "http://39.101.122.139:9001";
-// export const BASE_URL = "http://192.168.1.104:8888";
-// export const BASE_URL = "http://192.168.2.100:8888/";
+// export const BASE_URL = "http://127.0.0.1:9001";
+
+export const BASE_URL = "http://39.101.122.139:9001";
+
 export const myRequest = (options) => {
 	return new Promise((resolve, reject) => {
 		uni.request({
@@ -26,11 +25,8 @@ export const myRequest = (options) => {
 	})
 }
 
-// async getImage() {
-// 	const res = await myRequest({
-// 		url: "/api/"
-// 	})
-// },
+
+
 
 // 检查是否登录
 export const checkLogin = (url, show) => {
@@ -64,7 +60,8 @@ export const getUser = () => {
 	return obj;
 }
 
-export const cleanUser = ()=>{
+// 退出登录，删除用户
+export const cleanUser = () => {
 	uni.removeStorageSync("user")
 	uni.removeStorageSync("isLogin")
 	uni.switchTab({

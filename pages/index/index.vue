@@ -179,7 +179,7 @@
 				<view class="today">
 					<view class="today_head">
 						<view class="title">
-							今天的商品：
+							推荐商品：
 						</view>
 
 						<view class="allToday" @click="loolAll">
