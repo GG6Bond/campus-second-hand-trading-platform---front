@@ -42,6 +42,12 @@
 	import {
 		myRequest
 	} from "@/util/api.js"
+
+	import {
+		verifyPhone,
+		verifyEmail
+	} from '@/util/verify.js'
+
 	export default {
 		data() {
 			return {
@@ -58,9 +64,9 @@
 		},
 		methods: {
 			check() {
-				if (!this.id) {
+				if (!(verifyPhone(this.id))) {
 					uni.showToast({
-						title: "请输入手机号",
+						title: "手机号格式有误",
 						icon: "error"
 					})
 				} else if (!this.password) {
@@ -73,7 +79,7 @@
 						title: "密码不一致！",
 						icon: "error"
 					})
-				} else if (!this.username) {
+				} else if (!(verifyEmail(this.username))) {
 					uni.showToast({
 						title: "请输入用户名",
 						icon: "error"
@@ -185,14 +191,17 @@
 				color: #55aa7f;
 				font-weight: bold;
 			}
-			.yzm_button{
+
+			.yzm_button {
 				display: flex;
 				justify-content: center;
 				align-items: center;
+
 				input {
 					width: 40%;
 				}
-				button{
+
+				button {
 					// width: 200rpx;
 					height: 90rpx;
 					color: #00aaff;

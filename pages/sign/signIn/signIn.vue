@@ -26,6 +26,8 @@
 		cleanUser,
 		myRequest
 	} from "@/util/api.js"
+	
+	import {verifyPhone} from '@/util/verify.js'
 
 	export default {
 		data() {
@@ -36,7 +38,8 @@
 		},
 		methods: {
 			check() {
-				if (!this.username) {
+				
+				if (!(verifyPhone(this.username))) {
 					uni.showToast({
 						title: "请输入手机号",
 						icon: "error"
@@ -47,7 +50,6 @@
 						icon: "error"
 					})
 				} else {
-					// this.getPassword();
 					this.logIn();
 				}
 			},
